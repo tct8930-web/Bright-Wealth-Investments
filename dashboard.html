@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Investment Demo Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .demo {
+            background: #fff3cd;
+            color: #664d03;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+        }
+
+        .dashboard {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .balance {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Investment Demo</h1>
+        <p>Welcome, Demo User</p>
+    </header>
+
+    <div class="demo">
+        DEMO ONLY — NO REAL FUNDS OR WITHDRAWALS
+    </div>
+
+    <section class="dashboard">
+
+        <div class="card">
+            <h2>Account Balance</h2>
+            <div class="balance">$25,000.00</div>
+            <p>Simulated balance for demonstration purposes.</p>
+        </div>
+
+        <div class="card">
+            <h2>Portfolio</h2>
+            <p>Demo Investment: $20,000</p>
+            <p>Demo Profit: $5,000</p>
+        </div>
+
+        <div class="card">
+            <h2>Withdrawal</h2>
+            <p>This is a demonstration only. No money can be withdrawn.</p>
+
+            <button class="button" onclick="alert('Demo only — no real withdrawal is available.')">
+                Withdrawal
+            </button>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 Investment Demo</p>
+    </footer>
+
+</body>
+
+</html>
