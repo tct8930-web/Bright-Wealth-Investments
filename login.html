@@ -48,19 +48,18 @@
             border-radius: 6px;
         }
 
-        .login-button {
-            display: block;
+        button {
             width: 100%;
-            box-sizing: border-box;
             background: #111;
             color: white;
             padding: 13px;
+            border: none;
             border-radius: 6px;
-            text-decoration: none;
-            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
         }
 
-        .login-button:hover {
+        button:hover {
             background: #333;
         }
 
@@ -84,23 +83,41 @@
 
         <h2>Login</h2>
 
-        <form>
+        <form onsubmit="demoLogin(event)">
 
-            <input type="email" placeholder="Enter email">
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter demo email"
+                required
+            >
 
-            <input type="password" placeholder="Enter password">
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter demo password"
+                required
+            >
 
-            <a href="dashboard.html" class="login-button">
+            <button type="submit">
                 Login
-            </a>
+            </button>
 
         </form>
 
         <p class="note">
-            This is a demonstration website. No real accounts or funds are used.
+            Demo login only. No real accounts, passwords, or funds are used.
         </p>
 
     </div>
+
+    <script>
+        function demoLogin(event) {
+            event.preventDefault();
+
+            window.location.href = "dashboard.html";
+        }
+    </script>
 
 </body>
 
