@@ -1,64 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Investment Demo Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CL Investment | Dashboard</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background: #f4f6f8;
-            color: #222;
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #172033;
         }
 
         header {
-            background: #111;
+            background: #07111f;
             color: white;
-            text-align: center;
-            padding: 30px 20px;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .demo {
-            background: #fff3cd;
-            color: #664d03;
-            text-align: center;
-            padding: 12px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #16a34a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 20px;
         }
 
-        .dashboard {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
+        .brand h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .logout {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 9px 14px;
+            border: 1px solid #64748b;
+            border-radius: 7px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+        }
+
+        .simulation {
+            background: #fff7cc;
+            border: 1px solid #f1d875;
+            color: #735c00;
+            padding: 11px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 22px;
+        }
+
+        .welcome {
+            margin-bottom: 20px;
+        }
+
+        .welcome h2 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .welcome p {
+            color: #667085;
+            margin-top: 7px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
         }
 
         .card {
             background: white;
-            padding: 25px;
-            margin-bottom: 20px;
+            padding: 22px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
         }
 
-        .balance {
-            font-size: 36px;
+        .card-title {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .amount {
+            font-size: 28px;
             font-weight: bold;
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #111;
+        .positive {
+            color: #16a34a;
+            font-size: 14px;
+            margin-top: 7px;
+        }
+
+        .section {
+            background: white;
+            margin-top: 22px;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h3 {
+            margin-top: 0;
+        }
+
+        .investments {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .investment {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .investment h4 {
+            margin: 0 0 8px;
+        }
+
+        .investment p {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 7px;
+            background: #16a34a;
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buy-btn:hover {
+            background: #15803d;
+        }
+
+        .chart {
+            height: 180px;
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            padding: 15px 5px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .bar {
+            flex: 1;
+            background: #16a34a;
+            border-radius: 5px 5px 0 0;
+            min-height: 25px;
+        }
+
+        .activity {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+        }
+
+        .activity small {
+            color: #667085;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            color: #98a2b3;
+            font-size: 12px;
+        }
+
+        @media (max-width: 750px) {
+
+            .cards,
+            .investments {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .amount {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
@@ -66,42 +239,240 @@
 <body>
 
     <header>
-        <h1>Investment Demo</h1>
-        <p>Welcome, Demo User</p>
+
+        <div class="brand">
+
+            <div class="logo">
+                C
+            </div>
+
+            <h1>CL Investment</h1>
+
+        </div>
+
+        <a href="index.html" class="logout">
+            Log Out
+        </a>
+
     </header>
 
-    <div class="demo">
-        DEMO ONLY — NO REAL FUNDS OR WITHDRAWALS
-    </div>
+    <main class="container">
 
-    <section class="dashboard">
-
-        <div class="card">
-            <h2>Account Balance</h2>
-            <div class="balance">$25,000.00</div>
-            <p>Simulated balance for demonstration purposes.</p>
+        <div class="simulation">
+            SIMULATION — NO REAL FUNDS, DEPOSITS OR WITHDRAWALS
         </div>
 
-        <div class="card">
-            <h2>Portfolio</h2>
-            <p>Demo Investment: $20,000</p>
-            <p>Demo Profit: $5,000</p>
+        <div class="welcome">
+
+            <h2>Welcome Back 👋</h2>
+
+            <p>
+                Here's an overview of your simulated investment portfolio.
+            </p>
+
         </div>
 
-        <div class="card">
-            <h2>Withdrawal</h2>
-            <p>This is a demonstration only. No money can be withdrawn.</p>
+        <div class="cards">
 
-            <button class="button" onclick="alert('Demo only — no real withdrawal is available.')">
-                Withdrawal
-            </button>
+            <div class="card">
+
+                <div class="card-title">
+                    Portfolio Value
+                </div>
+
+                <div class="amount">
+                    $25,480.00
+                </div>
+
+                <div class="positive">
+                    +8.42% simulated return
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Available Cash
+                </div>
+
+                <div class="amount">
+                    $8,250.00
+                </div>
+
+                <div class="positive">
+                    Demo balance
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Total Return
+                </div>
+
+                <div class="amount">
+                    +$1,980.00
+                </div>
+
+                <div class="positive">
+                    Simulated gain
+                </div>
+
+            </div>
+
         </div>
 
-    </section>
+        <div class="section">
+
+            <h3>Portfolio Performance</h3>
+
+            <div class="chart">
+
+                <div class="bar" style="height:35%;"></div>
+                <div class="bar" style="height:48%;"></div>
+                <div class="bar" style="height:42%;"></div>
+                <div class="bar" style="height:62%;"></div>
+                <div class="bar" style="height:58%;"></div>
+                <div class="bar" style="height:75%;"></div>
+                <div class="bar" style="height:88%;"></div>
+
+            </div>
+
+            <p class="positive">
+                Simulated portfolio growth
+            </p>
+
+        </div>
+
+        <div class="section">
+
+            <h3>Investment Options</h3>
+
+            <div class="investments">
+
+                <div class="investment">
+
+                    <h4>Global Growth Fund</h4>
+
+                    <p>
+                        Diversified simulated investment portfolio.
+                    </p>
+
+                    <div class="price">
+                        $142.80
+                    </div>
+
+                    <button class="buy-btn" onclick="demoAction('Global Growth Fund')">
+                        Buy Demo
+                    </button>
+
+                </div>
+
+                <div class="investment">
+
+                    <h4>Technology Fund</h4>
+
+                    <p>
+                        Simulated technology-focused portfolio.
+                    </p>
+
+                    <div class="price">
+                        $218.45
+                    </div>
+
+                    <button class="buy-btn" onclick="demoAction('Technology Fund')">
+                        Buy Demo
+                    </button>
+
+                </div>
+
+                <div class="investment">
+
+                    <h4>Balanced Fund</h4>
+
+                    <p>
+                        Simulated diversified investment option.
+                    </p>
+
+                    <div class="price">
+                        $96.35
+                    </div>
+
+                    <button class="buy-btn" onclick="demoAction('Balanced Fund')">
+                        Buy Demo
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h3>Recent Activity</h3>
+
+            <div class="activity">
+
+                <div>
+                    Demo purchase
+                    <br>
+                    <small>Global Growth Fund</small>
+                </div>
+
+                <strong>+$500</strong>
+
+            </div>
+
+            <div class="activity">
+
+                <div>
+                    Simulated return
+                    <br>
+                    <small>Technology Fund</small>
+                </div>
+
+                <strong class="positive">+$125</strong>
+
+            </div>
+
+            <div class="activity">
+
+                <div>
+                    Demo purchase
+                    <br>
+                    <small>Balanced Fund</small>
+                </div>
+
+                <strong>+$300</strong>
+
+            </div>
+
+        </div>
+
+    </main>
 
     <footer>
-        <p>© 2026 Investment Demo</p>
+        © 2026 CL Investment Simulation
+        <br>
+        This website is for demonstration purposes only. No real funds are accepted.
     </footer>
+
+    <script>
+
+        function demoAction(name) {
+
+            alert(
+                "SIMULATION ONLY\n\n" +
+                "You selected: " + name + "\n\n" +
+                "No real investment has been made and no money has been charged."
+            );
+
+        }
+
+    </script>
 
 </body>
 
