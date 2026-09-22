@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Investment Demo Login</title>
+    <title>CL Investment | Login</title>
 
     <style>
         * {
@@ -15,121 +15,219 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #111827, #1f2937);
+            background: linear-gradient(135deg, #07111f, #102a43);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: #222;
+            justify-content: center;
+            color: #172033;
+        }
+
+        .login-container {
+            width: 92%;
+            max-width: 420px;
+        }
+
+        .brand {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .brand-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 12px;
+            border-radius: 14px;
+            background: #16a34a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .brand p {
+            margin: 7px 0 0;
+            color: #cbd5e1;
+            font-size: 14px;
         }
 
         .login-box {
-            width: 90%;
-            max-width: 400px;
             background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 32px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .simulation {
+            display: block;
             text-align: center;
-        }
-
-        .demo {
-            display: inline-block;
-            background: #facc15;
-            color: #111;
+            background: #fff7cc;
+            color: #735c00;
+            border: 1px solid #f1d875;
+            padding: 9px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 22px;
         }
 
-        h1 {
-            margin-bottom: 10px;
+        h2 {
+            text-align: center;
+            margin: 0 0 8px;
+            font-size: 24px;
         }
 
-        .notice {
+        .welcome {
+            text-align: center;
+            color: #667085;
             font-size: 14px;
-            color: #666;
             margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
         }
 
         input {
             width: 100%;
-            padding: 13px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 14px;
+            margin-bottom: 17px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #16a34a;
         }
 
         button {
             width: 100%;
-            padding: 13px;
-            margin-top: 15px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
-            background: #111827;
+            border-radius: 9px;
+            background: #16a34a;
             color: white;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
         button:hover {
-            background: #374151;
+            background: #15803d;
+        }
+
+        .demo-info {
+            margin-top: 20px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 9px;
+            text-align: center;
+            font-size: 12px;
+            color: #667085;
         }
 
         .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 11px;
+            color: #98a2b3;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-box">
+    <div class="login-container">
 
-        <div class="demo">DEMO ONLY</div>
+        <div class="brand">
 
-        <h1>Investment Demo</h1>
+            <div class="brand-icon">
+                C
+            </div>
 
-        <p class="notice">
-            This is a demonstration website. No real money or investment accounts are involved.
-        </p>
+            <h1>CL Investment</h1>
 
-        <form onsubmit="loginDemo(event)">
+            <p>Smart investing, simplified</p>
 
-            <input
-                type="email"
-                placeholder="Demo Email"
-                required
-            >
+        </div>
 
-            <input
-                type="password"
-                placeholder="Demo Password"
-                required
-            >
+        <div class="login-box">
 
-            <button type="submit">
-                Login to Demo
-            </button>
+            <div class="simulation">
+                SIMULATION — NO REAL FUNDS
+            </div>
 
-        </form>
+            <h2>Welcome Back</h2>
 
-        <p class="footer">
-            DEMO ONLY — NO REAL MONEY
-        </p>
+            <p class="welcome">
+                Sign in to access your investment dashboard.
+            </p>
+
+            <form onsubmit="loginDemo(event)">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter demo email"
+                    required
+                >
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter demo password"
+                    required
+                >
+
+                <button type="submit">
+                    Sign In
+                </button>
+
+            </form>
+
+            <div class="demo-info">
+                This is a simulated investment experience
+                for demonstration purposes.
+            </div>
+
+            <div class="footer">
+                © 2026 CL Investment Simulation
+            </div>
+
+        </div>
 
     </div>
 
     <script>
+
         function loginDemo(event) {
+
             event.preventDefault();
 
             window.location.href = "dashboard.html";
+
         }
+
     </script>
 
 </body>
