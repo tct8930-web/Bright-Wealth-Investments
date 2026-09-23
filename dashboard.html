@@ -151,48 +151,6 @@
             margin-top: 0;
         }
 
-        .investments {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .investment {
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 18px;
-        }
-
-        .investment h4 {
-            margin: 0 0 8px;
-        }
-
-        .investment p {
-            color: #667085;
-            font-size: 13px;
-        }
-
-        .price {
-            font-size: 21px;
-            font-weight: bold;
-            margin: 12px 0;
-        }
-
-        .buy-btn {
-            width: 100%;
-            padding: 11px;
-            border: none;
-            border-radius: 7px;
-            background: #16a34a;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .buy-btn:hover {
-            background: #15803d;
-        }
-
         .chart {
             height: 180px;
             display: flex;
@@ -317,8 +275,7 @@
 
         @media (max-width: 750px) {
 
-            .cards,
-            .investments {
+            .cards {
                 grid-template-columns: 1fr;
             }
 
@@ -483,95 +440,6 @@
         </div>
 
 
-        <!-- INVESTMENT OPTIONS -->
-
-        <div class="section">
-
-            <h3>
-                Investment Options
-            </h3>
-
-            <div class="investments">
-
-                <div class="investment">
-
-                    <h4>
-                        Global Growth Fund
-                    </h4>
-
-                    <p>
-                        Diversified simulated investment portfolio.
-                    </p>
-
-                    <div class="price">
-                        $142.80
-                    </div>
-
-                    <button
-                        class="buy-btn"
-                        onclick="demoAction('Global Growth Fund')">
-
-                        Buy Demo
-
-                    </button>
-
-                </div>
-
-
-                <div class="investment">
-
-                    <h4>
-                        Technology Fund
-                    </h4>
-
-                    <p>
-                        Simulated technology-focused portfolio.
-                    </p>
-
-                    <div class="price">
-                        $218.45
-                    </div>
-
-                    <button
-                        class="buy-btn"
-                        onclick="demoAction('Technology Fund')">
-
-                        Buy Demo
-
-                    </button>
-
-                </div>
-
-
-                <div class="investment">
-
-                    <h4>
-                        Balanced Fund
-                    </h4>
-
-                    <p>
-                        Simulated diversified investment option.
-                    </p>
-
-                    <div class="price">
-                        $96.35
-                    </div>
-
-                    <button
-                        class="buy-btn"
-                        onclick="demoAction('Balanced Fund')">
-
-                        Buy Demo
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
         <!-- RECENT ACTIVITY -->
 
         <div class="section">
@@ -585,12 +453,12 @@
 
                 <div>
 
-                    Demo purchase
+                    Demo activity
 
                     <br>
 
                     <small>
-                        Global Growth Fund
+                        Portfolio update
                     </small>
 
                 </div>
@@ -611,7 +479,7 @@
                     <br>
 
                     <small>
-                        Technology Fund
+                        Portfolio performance
                     </small>
 
                 </div>
@@ -627,12 +495,12 @@
 
                 <div>
 
-                    Demo purchase
+                    Demo activity
 
                     <br>
 
                     <small>
-                        Balanced Fund
+                        Portfolio update
                     </small>
 
                 </div>
@@ -752,23 +620,6 @@
 
 
     <script>
-
-        function demoAction(name) {
-
-            alert(
-
-                "SIMULATION ONLY\n\n" +
-
-                "You selected: " + name + "\n\n" +
-
-                "No real investment has been made " +
-
-                "and no money has been charged."
-
-            );
-
-        }
-
 
         function showWithdraw() {
 
