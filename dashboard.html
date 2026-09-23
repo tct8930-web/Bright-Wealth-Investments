@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CL Investment | Dashboard</title>
+    <title>Gerica Kathleen Bright | Investment Simulation</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -35,15 +37,15 @@
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 10px;
             background: #16a34a;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 14px;
         }
 
         .brand h1 {
@@ -70,7 +72,7 @@
             background: #fff7cc;
             border: 1px solid #f1d875;
             color: #735c00;
-            padding: 11px;
+            padding: 12px;
             border-radius: 8px;
             text-align: center;
             font-size: 13px;
@@ -120,6 +122,23 @@
             color: #16a34a;
             font-size: 14px;
             margin-top: 7px;
+        }
+
+        /* Withdraw button */
+
+        .withdraw-btn {
+            margin-top: 15px;
+            padding: 11px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #172033;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .withdraw-btn:hover {
+            background: #344054;
         }
 
         .section {
@@ -214,6 +233,90 @@
             font-size: 12px;
         }
 
+        /* Withdrawal popup */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.60);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 430px;
+            padding: 28px;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 10px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #667085;
+        }
+
+        .close:hover {
+            color: #172033;
+        }
+
+        .modal-label {
+            display: block;
+            font-weight: bold;
+            margin-top: 18px;
+            margin-bottom: 7px;
+        }
+
+        .modal-box input,
+        .modal-box select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .continue-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #16a34a;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .continue-btn:hover {
+            background: #15803d;
+        }
+
+        .notice {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            color: #667085;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
         @media (max-width: 750px) {
 
             .cards,
@@ -232,8 +335,21 @@
             .amount {
                 font-size: 25px;
             }
+
+            .brand h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 38px;
+                height: 38px;
+                font-size: 12px;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -243,10 +359,10 @@
         <div class="brand">
 
             <div class="logo">
-                C
+                GKB
             </div>
 
-            <h1>CL Investment</h1>
+            <h1>Gerica Kathleen Bright</h1>
 
         </div>
 
@@ -256,15 +372,20 @@
 
     </header>
 
+
     <main class="container">
+
 
         <div class="simulation">
             SIMULATION — NO REAL FUNDS, DEPOSITS OR WITHDRAWALS
         </div>
 
+
         <div class="welcome">
 
-            <h2>Welcome Back 👋</h2>
+            <h2>
+                Welcome Back 👋
+            </h2>
 
             <p>
                 Here's an overview of your simulated investment portfolio.
@@ -272,7 +393,11 @@
 
         </div>
 
+
+        <!-- ACCOUNT CARDS -->
+
         <div class="cards">
+
 
             <div class="card">
 
@@ -290,6 +415,7 @@
 
             </div>
 
+
             <div class="card">
 
                 <div class="card-title">
@@ -304,7 +430,16 @@
                     Demo balance
                 </div>
 
+                <button
+                    class="withdraw-btn"
+                    onclick="showWithdraw()">
+
+                    Withdraw
+
+                </button>
+
             </div>
+
 
             <div class="card">
 
@@ -322,20 +457,32 @@
 
             </div>
 
+
         </div>
+
+
+        <!-- PERFORMANCE -->
 
         <div class="section">
 
-            <h3>Portfolio Performance</h3>
+            <h3>
+                Portfolio Performance
+            </h3>
 
             <div class="chart">
 
                 <div class="bar" style="height:35%;"></div>
+
                 <div class="bar" style="height:48%;"></div>
+
                 <div class="bar" style="height:42%;"></div>
+
                 <div class="bar" style="height:62%;"></div>
+
                 <div class="bar" style="height:58%;"></div>
+
                 <div class="bar" style="height:75%;"></div>
+
                 <div class="bar" style="height:88%;"></div>
 
             </div>
@@ -346,15 +493,23 @@
 
         </div>
 
+
+        <!-- INVESTMENT OPTIONS -->
+
         <div class="section">
 
-            <h3>Investment Options</h3>
+            <h3>
+                Investment Options
+            </h3>
 
             <div class="investments">
 
+
                 <div class="investment">
 
-                    <h4>Global Growth Fund</h4>
+                    <h4>
+                        Global Growth Fund
+                    </h4>
 
                     <p>
                         Diversified simulated investment portfolio.
@@ -364,15 +519,22 @@
                         $142.80
                     </div>
 
-                    <button class="buy-btn" onclick="demoAction('Global Growth Fund')">
+                    <button
+                        class="buy-btn"
+                        onclick="demoAction('Global Growth Fund')">
+
                         Buy Demo
+
                     </button>
 
                 </div>
 
+
                 <div class="investment">
 
-                    <h4>Technology Fund</h4>
+                    <h4>
+                        Technology Fund
+                    </h4>
 
                     <p>
                         Simulated technology-focused portfolio.
@@ -382,15 +544,22 @@
                         $218.45
                     </div>
 
-                    <button class="buy-btn" onclick="demoAction('Technology Fund')">
+                    <button
+                        class="buy-btn"
+                        onclick="demoAction('Technology Fund')">
+
                         Buy Demo
+
                     </button>
 
                 </div>
 
+
                 <div class="investment">
 
-                    <h4>Balanced Fund</h4>
+                    <h4>
+                        Balanced Fund
+                    </h4>
 
                     <p>
                         Simulated diversified investment option.
@@ -400,79 +569,302 @@
                         $96.35
                     </div>
 
-                    <button class="buy-btn" onclick="demoAction('Balanced Fund')">
+                    <button
+                        class="buy-btn"
+                        onclick="demoAction('Balanced Fund')">
+
                         Buy Demo
+
                     </button>
 
                 </div>
 
+
             </div>
 
         </div>
+
+
+        <!-- RECENT ACTIVITY -->
 
         <div class="section">
 
-            <h3>Recent Activity</h3>
+            <h3>
+                Recent Activity
+            </h3>
+
 
             <div class="activity">
 
                 <div>
+
                     Demo purchase
+
                     <br>
-                    <small>Global Growth Fund</small>
+
+                    <small>
+                        Global Growth Fund
+                    </small>
+
                 </div>
 
-                <strong>+$500</strong>
+                <strong>
+                    +$500
+                </strong>
 
             </div>
 
+
             <div class="activity">
 
                 <div>
+
                     Simulated return
+
                     <br>
-                    <small>Technology Fund</small>
+
+                    <small>
+                        Technology Fund
+                    </small>
+
                 </div>
 
-                <strong class="positive">+$125</strong>
+                <strong class="positive">
+                    +$125
+                </strong>
 
             </div>
+
 
             <div class="activity">
 
                 <div>
+
                     Demo purchase
+
                     <br>
-                    <small>Balanced Fund</small>
+
+                    <small>
+                        Balanced Fund
+                    </small>
+
                 </div>
 
-                <strong>+$300</strong>
+                <strong>
+                    +$300
+                </strong>
 
             </div>
+
 
         </div>
 
+
     </main>
 
+
     <footer>
-        © 2026 CL Investment Simulation
+
+        © 2026 Gerica Kathleen Bright Investment Simulation
+
         <br>
-        This website is for demonstration purposes only. No real funds are accepted.
+
+        This website is for demonstration purposes only.
+        No real funds are accepted.
+
     </footer>
 
+
+    <!-- WITHDRAWAL POPUP -->
+
+    <div
+        id="withdrawModal"
+        class="modal">
+
+        <div class="modal-box">
+
+
+            <span
+                class="close"
+                onclick="closeWithdraw()">
+
+                &times;
+
+            </span>
+
+
+            <h2>
+                Withdraw
+            </h2>
+
+
+            <div class="simulation">
+
+                SIMULATION ONLY — NO REAL FUNDS
+
+            </div>
+
+
+            <label class="modal-label">
+
+                Demo Withdrawal Amount
+
+            </label>
+
+
+            <input
+                id="withdrawAmount"
+                type="number"
+                min="1"
+                placeholder="Enter demo amount">
+
+
+            <label class="modal-label">
+
+                Demo Withdrawal Method
+
+            </label>
+
+
+            <select id="withdrawMethod">
+
+                <option value="">
+                    Select method
+                </option>
+
+                <option>
+                    Demo Bank Account
+                </option>
+
+                <option>
+                    Demo Mobile Wallet
+                </option>
+
+            </select>
+
+
+            <button
+                class="continue-btn"
+                onclick="demoWithdraw()">
+
+                Continue
+
+            </button>
+
+
+            <div class="notice">
+
+                This is a demonstration only.
+                No withdrawal will be processed,
+                no bank account will be connected,
+                and no real money will be transferred.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
     <script>
+
 
         function demoAction(name) {
 
             alert(
+
                 "SIMULATION ONLY\n\n" +
+
                 "You selected: " + name + "\n\n" +
-                "No real investment has been made and no money has been charged."
+
+                "No real investment has been made " +
+
+                "and no money has been charged."
+
             );
 
         }
 
+
+
+        function showWithdraw() {
+
+            document.getElementById(
+                "withdrawModal"
+            ).style.display = "flex";
+
+        }
+
+
+
+        function closeWithdraw() {
+
+            document.getElementById(
+                "withdrawModal"
+            ).style.display = "none";
+
+        }
+
+
+
+        function demoWithdraw() {
+
+            var amount =
+                document.getElementById(
+                    "withdrawAmount"
+                ).value;
+
+
+            var method =
+                document.getElementById(
+                    "withdrawMethod"
+                ).value;
+
+
+            if (amount === "") {
+
+                alert(
+                    "Please enter a demo withdrawal amount."
+                );
+
+                return;
+
+            }
+
+
+            if (method === "") {
+
+                alert(
+                    "Please select a demo withdrawal method."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+
+                "SIMULATION ONLY\n\n" +
+
+                "Demo withdrawal amount: $" +
+                amount +
+                "\n\n" +
+
+                "Method: " +
+                method +
+                "\n\n" +
+
+                "No real withdrawal has been processed."
+
+            );
+
+        }
+
+
     </script>
+
 
 </body>
 
