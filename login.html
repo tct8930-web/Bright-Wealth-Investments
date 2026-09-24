@@ -49,6 +49,17 @@
             margin: 5px 0 0;
         }
 
+        .greeting {
+            max-width: 900px;
+            margin: 25px auto 0;
+            padding: 0 20px;
+        }
+
+        .greeting h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
         main {
             max-width: 900px;
             margin: 30px auto;
@@ -207,6 +218,17 @@
     </div>
 
 </header>
+
+
+<!-- AUTOMATIC GREETING -->
+
+<div class="greeting">
+
+    <h2 id="greetingText">
+        Hello, Gerica Kathleen Bright
+    </h2>
+
+</div>
 
 
 <div class="demo-notice">
@@ -460,6 +482,36 @@
 
 
 <script>
+
+    /* AUTOMATIC TIME-BASED GREETING */
+
+    const hour = new Date().getHours();
+
+    const greetingText =
+        document.getElementById("greetingText");
+
+    const name = "Gerica Kathleen Bright";
+
+
+    if (hour < 12) {
+
+        greetingText.textContent =
+            "Good Morning, " + name;
+
+    } else if (hour < 18) {
+
+        greetingText.textContent =
+            "Good Afternoon, " + name;
+
+    } else {
+
+        greetingText.textContent =
+            "Good Evening, " + name;
+
+    }
+
+
+    /* PRACTICE WITHDRAWAL REVIEW */
 
     function reviewWithdrawal() {
 
