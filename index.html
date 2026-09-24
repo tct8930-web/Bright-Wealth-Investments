@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bright Wealth Investments</title>
+    <title>Bright Wealth Investments - Practice Account</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -48,10 +50,31 @@
             margin: 5px 0 0;
         }
 
+        .greeting {
+            max-width: 900px;
+            margin: 25px auto 0;
+            padding: 0 20px;
+        }
+
+        .greeting h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
         main {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
+        }
+
+        .demo-notice {
+            max-width: 900px;
+            margin: 20px auto 0;
+            padding: 14px 20px;
+            background: #fff3cd;
+            border: 1px solid #ffe69c;
+            border-radius: 8px;
+            color: #664d03;
         }
 
         .cards {
@@ -64,21 +87,29 @@
         .activity,
         .withdraw {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 22px;
+            border-radius: 14px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .card h3 {
-            margin-top: 0;
-            font-size: 15px;
+            margin: 0 0 12px;
+            font-size: 14px;
             color: #666;
+            font-weight: normal;
         }
 
         .balance {
-            font-size: 25px;
+            font-size: 28px;
             font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+        .label {
+            margin: 8px 0 0;
+            font-size: 13px;
+            color: #888;
         }
 
         .activity-row {
@@ -130,18 +161,19 @@
             background: #07553e;
         }
 
-        .review {
-            margin-top: 20px;
-            padding: 18px;
-            background: #f4f6f8;
-            border-radius: 8px;
-        }
-
         #bankDetails {
             margin-top: 15px;
             padding: 15px;
             background: #f4f6f8;
             border-radius: 8px;
+        }
+
+        .review {
+            margin-top: 20px;
+            padding: 18px;
+            background: #eef7f2;
+            border-radius: 8px;
+            display: none;
         }
 
         footer {
@@ -151,14 +183,20 @@
         }
 
         @media (max-width: 700px) {
+
             .cards {
                 grid-template-columns: 1fr;
             }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -174,7 +212,7 @@
 
             <h1>Bright Wealth Investments</h1>
 
-            <p>Account Overview</p>
+            <p>Practice Account Dashboard</p>
 
         </div>
 
@@ -183,7 +221,27 @@
 </header>
 
 
+<!-- AUTOMATIC GREETING -->
+
+<div class="greeting">
+
+    <h2 id="greetingText">
+        Hello, Gerica Kathleen Bright
+    </h2>
+
+</div>
+
+
+<div class="demo-notice">
+
+    <strong>Practice Account:</strong>
+    This dashboard uses fictional data for learning and demonstration purposes.
+
+</div>
+
+
 <main>
+
 
     <!-- BALANCE CARDS -->
 
@@ -197,6 +255,10 @@
                 $25,450.00
             </div>
 
+            <p class="label">
+                Current account balance
+            </p>
+
         </div>
 
 
@@ -208,6 +270,10 @@
                 $5,450.00
             </div>
 
+            <p class="label">
+                Total investment growth
+            </p>
+
         </div>
 
 
@@ -218,6 +284,10 @@
             <div class="balance">
                 $25,450.00
             </div>
+
+            <p class="label">
+                Available for withdrawal
+            </p>
 
         </div>
 
@@ -285,11 +355,11 @@
     </section>
 
 
-    <!-- WITHDRAWAL -->
+    <!-- PRACTICE WITHDRAWAL -->
 
     <section class="withdraw">
 
-        <h2>Withdraw Funds</h2>
+        <h2>Practice Withdrawal</h2>
 
 
         <p>
@@ -308,6 +378,7 @@
             id="withdrawAmount"
             placeholder="Enter amount"
             min="1"
+            max="25450"
         >
 
 
@@ -319,147 +390,87 @@
         <select id="destination">
 
             <option value="">
-                Select your bank
+                Select a practice bank
             </option>
 
-            <option value="chime">
+            <option>
                 Chime
             </option>
 
-            <option value="bank-of-america">
+            <option>
                 Bank of America
             </option>
 
-            <option value="chase">
+            <option>
                 Chase
             </option>
 
-            <option value="wells-fargo">
+            <option>
                 Wells Fargo
             </option>
 
-            <option value="citibank">
+            <option>
                 Citibank
             </option>
 
-            <option value="capital-one">
+            <option>
                 Capital One
             </option>
 
-            <option value="us-bank">
+            <option>
                 U.S. Bank
             </option>
 
-            <option value="pnc">
+            <option>
                 PNC Bank
-            </option>
-
-            <option value="truist">
-                Truist
-            </option>
-
-            <option value="td-bank">
-                TD Bank
-            </option>
-
-            <option value="ally-bank">
-                Ally Bank
-            </option>
-
-            <option value="discover-bank">
-                Discover Bank
-            </option>
-
-            <option value="fifth-third-bank">
-                Fifth Third Bank
-            </option>
-
-            <option value="keybank">
-                KeyBank
-            </option>
-
-            <option value="regions-bank">
-                Regions Bank
-            </option>
-
-            <option value="huntington-bank">
-                Huntington Bank
-            </option>
-
-            <option value="citizens-bank">
-                Citizens Bank
-            </option>
-
-            <option value="bmo">
-                BMO
-            </option>
-
-            <option value="santander">
-                Santander Bank
             </option>
 
         </select>
 
 
-        <!-- BANK INFORMATION -->
-
-        <div id="bankDetails" style="display:none;">
-
-            <label for="accountHolder">
-                Account Holder Name
-            </label>
-
-            <input
-                type="text"
-                id="accountHolder"
-                placeholder="Enter account holder name"
-            >
-
-
-            <label for="accountNumber">
-                Account Number
-            </label>
-
-            <input
-                type="text"
-                id="accountNumber"
-                placeholder="Enter account number"
-                autocomplete="off"
-            >
-
-
-            <label for="routingNumber">
-                Routing Number
-            </label>
-
-            <input
-                type="text"
-                id="routingNumber"
-                placeholder="Enter routing number"
-                inputmode="numeric"
-                autocomplete="off"
-            >
-
-
-            <p>
-                Processing Fee:
-                <strong>$600.00</strong>
-            </p>
-
-        </div>
-
-
-        <!-- THIS BUTTON DOES NOTHING -->
-
         <button
             class="button"
             type="button"
+            onclick="reviewWithdrawal()"
         >
             Review Withdrawal
         </button>
 
 
+        <div
+            id="review"
+            class="review"
+        >
+
+            <h3>Withdrawal Review</h3>
+
+            <p>
+                Amount:
+                <strong id="reviewAmount"></strong>
+            </p>
+
+            <p>
+                Destination:
+                <strong id="reviewBank"></strong>
+            </p>
+
+            <p>
+                Status:
+                <strong>Practice Request</strong>
+            </p>
+
+            <button
+                class="button"
+                type="button"
+                onclick="submitPracticeWithdrawal()"
+            >
+                Submit Practice Request
+            </button>
+
+        </div>
+
     </section>
+
 
 </main>
 
@@ -473,29 +484,102 @@
 
 <script>
 
-    /* SHOW BANK INFORMATION WHEN A BANK IS SELECTED */
+    /* AUTOMATIC TIME-BASED GREETING */
 
-    document
-        .getElementById("destination")
-        .addEventListener("change", function () {
+    const hour = new Date().getHours();
 
-            const bankDetails =
-                document.getElementById("bankDetails");
+    const greetingText =
+        document.getElementById("greetingText");
+
+    const name = "Gerica Kathleen Bright";
 
 
-            if (this.value) {
+    if (hour < 12) {
 
-                bankDetails.style.display = "block";
+        greetingText.textContent =
+            "Good Morning, " + name;
 
-            } else {
+    } else if (hour < 18) {
 
-                bankDetails.style.display = "none";
+        greetingText.textContent =
+            "Good Afternoon, " + name;
 
-            }
+    } else {
 
-        });
+        greetingText.textContent =
+            "Good Evening, " + name;
+
+    }
+
+
+    /* PRACTICE WITHDRAWAL REVIEW */
+
+    function reviewWithdrawal() {
+
+        const amount =
+            Number(
+                document.getElementById("withdrawAmount").value
+            );
+
+        const destination =
+            document.getElementById("destination").value;
+
+
+        if (!amount || amount <= 0) {
+
+            alert("Please enter a valid withdrawal amount.");
+
+            return;
+        }
+
+
+        if (amount > 25450) {
+
+            alert(
+                "The amount cannot exceed the practice balance of $25,450.00."
+            );
+
+            return;
+        }
+
+
+        if (!destination) {
+
+            alert("Please select a practice bank.");
+
+            return;
+        }
+
+
+        document.getElementById("reviewAmount").textContent =
+            "$" +
+            amount.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+
+        document.getElementById("reviewBank").textContent =
+            destination;
+
+
+        document.getElementById("review").style.display =
+            "block";
+
+    }
+
+
+    function submitPracticeWithdrawal() {
+
+        alert(
+            "Practice withdrawal request submitted.\n\n" +
+            "No real money was transferred."
+        );
+
+    }
 
 </script>
+
 
 </body>
 
