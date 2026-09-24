@@ -150,14 +150,21 @@
             background: #15803d;
         }
 
-        .button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
         #withdrawMessage {
             margin-top: 15px;
             font-weight: bold;
+        }
+
+        .review {
+            margin-top: 20px;
+            padding: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .review p {
+            margin: 10px 0;
         }
 
         footer {
@@ -266,46 +273,38 @@
         <div class="activity">
 
             <div class="activity-item">
-
                 <span>Investment Deposit</span>
 
                 <span class="green">
                     +$10,000.00
                 </span>
-
             </div>
 
 
             <div class="activity-item">
-
                 <span>Portfolio Growth</span>
 
                 <span class="green">
                     +$2,500.00
                 </span>
-
             </div>
 
 
             <div class="activity-item">
-
                 <span>Account Growth</span>
 
                 <span class="green">
                     +$1,250.00
                 </span>
-
             </div>
 
 
             <div class="activity-item">
-
                 <span>Portfolio Update</span>
 
                 <span class="green">
                     +$1,700.00
                 </span>
-
             </div>
 
         </div>
@@ -313,12 +312,15 @@
     </div>
 
 
+    <!-- WITHDRAWAL SECTION -->
+
     <div class="withdraw">
 
         <h2>Withdraw Funds</h2>
 
         <p>
-            Enter an amount to submit a withdrawal request.
+            Available Balance:
+            <strong>$25,450.00</strong>
         </p>
 
         <input
@@ -330,13 +332,60 @@
 
         <button
             class="button"
-            id="withdrawButton"
-            onclick="withdraw()"
+            onclick="reviewWithdrawal()"
         >
             Withdraw
         </button>
 
-        <p id="withdrawMessage"></p>
+
+        <!-- REVIEW AREA -->
+
+        <div
+            id="withdrawReview"
+            class="review"
+            style="display:none;"
+        >
+
+            <h3>Review Withdrawal</h3>
+
+            <p>
+                Withdrawal Amount:
+                <strong id="reviewAmount">
+                    $0.00
+                </strong>
+            </p>
+
+            <p>
+                Processing Fee:
+                <strong>$600.00</strong>
+            </p>
+
+            <p>
+                Amount You Receive:
+                <strong id="receiveAmount">
+                    $0.00
+                </strong>
+            </p>
+
+            <p>
+                Destination:
+                <strong>
+                    Practice Account
+                </strong>
+            </p>
+
+
+            <button
+                class="button"
+                onclick="confirmWithdrawal()"
+            >
+                Confirm Withdrawal
+            </button>
+
+
+            <p id="withdrawMessage"></p>
+
+        </div>
 
     </div>
 
@@ -356,87 +405,71 @@
 
 <script>
 
-async function withdraw() {
-
-    const amountInput =
-        document.getElementById("withdrawAmount");
-
-    const button =
-        document.getElementById("withdrawButton");
-
-    const message =
-        document.getElementById("withdrawMessage");
+function reviewWithdrawal() {
 
     const amount =
-        Number(amountInput.value);
+        Number(
+            document.getElementById("withdrawAmount").value
+        );
+
+    const balance = 25450;
 
 
     if (!amount || amount <= 0) {
 
-        message.textContent =
-            "Please enter a valid withdrawal amount.";
+        alert(
+            "Please enter a valid withdrawal amount."
+        );
 
         return;
     }
 
 
-    button.disabled = true;
+    if (amount > balance) {
 
-    button.textContent =
-        "Processing...";
-
-    message.textContent =
-        "Sending withdrawal request...";
-
-
-    try {
-
-        const response = await fetch(
-            "http://localhost:3000/withdraw",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    amount: amount
-                })
-            }
+        alert(
+            "Withdrawal amount exceeds available balance."
         );
 
-
-        const data =
-            await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.message ||
-                "Withdrawal request failed."
-            );
-        }
-
-
-        message.textContent =
-            data.message;
-
-
-    } catch (error) {
-
-        message.textContent =
-            "The withdrawal server is not connected. " +
-            "Make sure your backend is running.";
-
+        return;
     }
 
 
-    button.disabled = false;
+    const formattedAmount =
+        "$" +
+        amount.toLocaleString("en-US", {
+            minimumFractionDigits: 2
+        });
 
-    button.textContent =
-        "Withdraw";
+
+    document.getElementById(
+        "reviewAmount"
+    ).textContent = formattedAmount;
+
+
+    document.getElementById(
+        "receiveAmount"
+    ).textContent = formattedAmount;
+
+
+    document.getElementById(
+        "withdrawReview"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "withdrawMessage"
+    ).textContent = "";
+
+}
+
+
+function confirmWithdrawal() {
+
+    document.getElementById(
+        "withdrawMessage"
+    ).textContent =
+        "Practice withdrawal submitted successfully. No real money was transferred.";
 
 }
 
