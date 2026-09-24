@@ -308,6 +308,23 @@
             background: #15803d;
         }
 
+        .back-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            background: white;
+            color: #172033;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .back-btn:hover {
+            background: #f4f7f9;
+        }
+
         .notice {
             margin-top: 15px;
             padding: 11px;
@@ -637,84 +654,184 @@
             </span>
 
 
-            <h2>
-                Withdrawal
-            </h2>
+            <!-- STEP 1 -->
 
-            <div class="modal-subtitle">
-                Request a withdrawal from your available balance.
+            <div id="withdrawStep1">
+
+                <h2>
+                    Withdrawal
+                </h2>
+
+                <div class="modal-subtitle">
+                    Choose your withdrawal method.
+                </div>
+
+
+                <div class="balance-box">
+
+                    <div class="balance-label">
+                        Available balance
+                    </div>
+
+                    <div class="balance-amount">
+                        $8,250.00
+                    </div>
+
+                </div>
+
+
+                <label class="modal-label">
+                    Withdrawal Amount
+                </label>
+
+                <input
+                    id="withdrawAmount"
+                    type="number"
+                    min="1"
+                    max="8250"
+                    placeholder="Enter amount">
+
+
+                <label class="modal-label">
+                    Withdrawal Method
+                </label>
+
+                <select id="withdrawMethod">
+
+                    <option value="">
+                        Select method
+                    </option>
+
+                    <option value="Chime">
+                        Chime
+                    </option>
+
+                    <option value="Bank of America">
+                        Bank of America
+                    </option>
+
+                    <option value="Chase">
+                        Chase
+                    </option>
+
+                    <option value="Wells Fargo">
+                        Wells Fargo
+                    </option>
+
+                    <option value="Capital One">
+                        Capital One
+                    </option>
+
+                    <option value="Mobile Wallet">
+                        Mobile Wallet
+                    </option>
+
+                </select>
+
+
+                <div class="method-info">
+
+                    🔒
+
+                    <span>
+                        Withdrawal details are not connected to a real financial account.
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="continue-btn"
+                    onclick="goToAccountDetails()">
+
+                    Continue
+
+                </button>
+
             </div>
 
 
-            <div class="balance-box">
+            <!-- STEP 2 -->
 
-                <div class="balance-label">
-                    Available balance
-                </div>
+            <div
+                id="withdrawStep2"
+                style="display: none;">
 
-                <div class="balance-amount">
-                    $8,250.00
-                </div>
-
-            </div>
-
-
-            <label class="modal-label">
-                Withdrawal Amount
-            </label>
-
-            <input
-                id="withdrawAmount"
-                type="number"
-                min="1"
-                max="8250"
-                placeholder="Enter amount">
-
-
-            <label class="modal-label">
-                Withdrawal Method
-            </label>
-
-            <select id="withdrawMethod">
-
-                <option value="">
-                    Select method
-                </option>
-
-                <option value="Bank Account">
+                <h2 id="accountTitle">
                     Bank Account
-                </option>
+                </h2>
 
-                <option value="Mobile Wallet">
-                    Mobile Wallet
-                </option>
-
-            </select>
+                <div class="modal-subtitle">
+                    Enter account information for this demonstration.
+                </div>
 
 
-            <div class="method-info">
+                <label class="modal-label">
+                    Account Holder Name
+                </label>
 
-                🔒
-
-                <span>
-                    Withdrawal details are not connected to a real financial account.
-                </span>
-
-            </div>
-
-
-            <button
-                class="continue-btn"
-                onclick="demoWithdraw()">
-
-                Continue
-
-            </button>
+                <input
+                    id="accountHolder"
+                    type="text"
+                    placeholder="Enter account holder name">
 
 
-            <div class="notice">
+                <label class="modal-label">
+                    Account Number
+                </label>
 
-                Demo only — no withdrawal is processed and no real money is transferred.
+                <input
+                    id="accountNumber"
+                    type="text"
+                    inputmode="numeric"
+                    placeholder="Demo account number">
+
+
+                <label class="modal-label">
+                    Account Type
+                </label>
+
+                <select id="accountType">
+
+                    <option value="">
+                        Select account type
+                    </option>
+
+                    <option value="Checking">
+                        Checking
+                    </option>
+
+                    <option value="Savings">
+                        Savings
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="continue-btn"
+                    onclick="completeWithdrawal()">
+
+                    Continue
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="back-btn"
+                    onclick="backToWithdrawal()">
+
+                    Back
+
+                </button>
+
+
+                <div class="notice">
+
+                    Demonstration only. No real bank account is connected and no money is transferred.
+
+                </div>
 
             </div>
 
@@ -731,6 +848,16 @@
                 "withdrawModal"
             ).style.display = "flex";
 
+
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display = "none";
+
         }
 
 
@@ -743,12 +870,13 @@
         }
 
 
-        function demoWithdraw() {
+        function goToAccountDetails() {
 
             var amount =
                 document.getElementById(
                     "withdrawAmount"
                 ).value;
+
 
             var method =
                 document.getElementById(
@@ -800,19 +928,100 @@
             }
 
 
+            document.getElementById(
+                "accountTitle"
+            ).textContent =
+                method + " Account";
+
+
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display =
+                "block";
+
+        }
+
+
+        function backToWithdrawal() {
+
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display =
+                "block";
+
+        }
+
+
+        function completeWithdrawal() {
+
+            var holder =
+                document.getElementById(
+                    "accountHolder"
+                ).value;
+
+
+            var account =
+                document.getElementById(
+                    "accountNumber"
+                ).value;
+
+
+            var type =
+                document.getElementById(
+                    "accountType"
+                ).value;
+
+
+            if (holder === "") {
+
+                alert(
+                    "Please enter the account holder name."
+                );
+
+                return;
+
+            }
+
+
+            if (account === "") {
+
+                alert(
+                    "Please enter a demo account number."
+                );
+
+                return;
+
+            }
+
+
+            if (type === "") {
+
+                alert(
+                    "Please select an account type."
+                );
+
+                return;
+
+            }
+
+
             alert(
 
                 "DEMO WITHDRAWAL\n\n" +
 
-                "Amount: $" +
-                Number(amount).toLocaleString() +
-                "\n\n" +
-
-                "Method: " +
-                method +
-                "\n\n" +
-
-                "This is a demonstration. No real withdrawal has been processed."
+                "Your withdrawal request has been completed in the demonstration."
 
             );
 
@@ -823,12 +1032,14 @@
 
             document.getElementById(
                 "moreActivity"
-            ).style.display = "block";
+            ).style.display =
+                "block";
 
 
             document.getElementById(
                 "showMoreBtn"
-            ).style.display = "none";
+            ).style.display =
+                "none";
 
         }
 
