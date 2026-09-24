@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +67,7 @@
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
         }
 
         .card h3 {
@@ -110,6 +111,7 @@
             border: 1px solid #ccc;
             border-radius: 7px;
             font-size: 16px;
+            background: white;
         }
 
         .button {
@@ -135,6 +137,11 @@
             border-radius: 8px;
         }
 
+        #withdrawMessage {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
         footer {
             text-align: center;
             padding: 25px;
@@ -152,6 +159,7 @@
 <body>
 
 <header>
+
     <div class="brand">
 
         <img
@@ -161,74 +169,147 @@
         >
 
         <div>
+
             <h1>Bright Wealth Investments</h1>
+
             <p>Account Overview</p>
+
         </div>
 
     </div>
+
 </header>
 
+
 <main>
+
+    <!-- BALANCE CARDS -->
 
     <section class="cards">
 
         <div class="card">
+
             <h3>Total Balance</h3>
-            <div class="balance">$25,450.00</div>
+
+            <div class="balance">
+                $25,450.00
+            </div>
+
         </div>
 
+
         <div class="card">
+
             <h3>Total Profit</h3>
-            <div class="balance">$5,450.00</div>
+
+            <div class="balance">
+                $5,450.00
+            </div>
+
         </div>
 
+
         <div class="card">
+
             <h3>Available Balance</h3>
-            <div class="balance">$25,450.00</div>
+
+            <div
+                class="balance"
+                id="availableBalance"
+            >
+                $25,450.00
+            </div>
+
         </div>
 
     </section>
+
+
+    <!-- RECENT ACTIVITY -->
 
     <section class="activity">
 
         <h2>Recent Activity</h2>
 
-        <div class="activity-row">
-            <span>Investment Deposit</span>
-            <span class="positive">+$10,000.00</span>
-        </div>
 
         <div class="activity-row">
-            <span>Portfolio Growth</span>
-            <span class="positive">+$2,500.00</span>
+
+            <span>
+                Investment Deposit
+            </span>
+
+            <span class="positive">
+                +$10,000.00
+            </span>
+
         </div>
 
-        <div class="activity-row">
-            <span>Account Growth</span>
-            <span class="positive">+$1,250.00</span>
-        </div>
 
         <div class="activity-row">
-            <span>Portfolio Update</span>
-            <span class="positive">+$1,700.00</span>
+
+            <span>
+                Portfolio Growth
+            </span>
+
+            <span class="positive">
+                +$2,500.00
+            </span>
+
+        </div>
+
+
+        <div class="activity-row">
+
+            <span>
+                Account Growth
+            </span>
+
+            <span class="positive">
+                +$1,250.00
+            </span>
+
+        </div>
+
+
+        <div class="activity-row">
+
+            <span>
+                Portfolio Update
+            </span>
+
+            <span class="positive">
+                +$1,700.00
+            </span>
+
         </div>
 
     </section>
+
+
+    <!-- WITHDRAWAL -->
 
     <section class="withdraw">
 
         <h2>Withdraw Funds</h2>
 
+
         <p>
+
             Available Balance:
-            <strong id="availableBalance">
+
+            <strong>
                 $25,450.00
             </strong>
+
         </p>
+
+
+        <!-- AMOUNT -->
 
         <label for="withdrawAmount">
             Withdrawal Amount
         </label>
+
 
         <input
             type="number"
@@ -237,21 +318,52 @@
             min="1"
         >
 
+
+        <!-- BANK -->
+
         <label for="destination">
             Withdrawal Destination
         </label>
 
+
         <select id="destination">
 
             <option value="">
-                Select withdrawal destination
+                Select your bank
             </option>
 
-            <option value="bank">
-                Bank Account
+            <option value="chime">
+                Chime
+            </option>
+
+            <option value="bank-of-america">
+                Bank of America
+            </option>
+
+            <option value="chase">
+                Chase
+            </option>
+
+            <option value="wells-fargo">
+                Wells Fargo
+            </option>
+
+            <option value="citibank">
+                Citibank
+            </option>
+
+            <option value="capital-one">
+                Capital One
+            </option>
+
+            <option value="us-bank">
+                U.S. Bank
             </option>
 
         </select>
+
+
+        <!-- REVIEW BUTTON -->
 
         <button
             class="button"
@@ -260,41 +372,63 @@
             Review Withdrawal
         </button>
 
+
+        <!-- REVIEW -->
+
         <div
             id="withdrawReview"
             class="review"
-            style="display:none;"
+            style="display: none;"
         >
 
-            <h3>Review Withdrawal</h3>
+            <h3>
+                Review Withdrawal
+            </h3>
+
 
             <p>
+
                 Withdrawal Amount:
+
                 <strong id="reviewAmount">
                     $0.00
                 </strong>
+
             </p>
 
+
             <p>
+
                 Processing Fee:
+
                 <strong id="fee">
                     $600.00
                 </strong>
+
             </p>
 
+
             <p>
+
                 Amount to Receive:
+
                 <strong id="receiveAmount">
                     $0.00
                 </strong>
+
             </p>
 
+
             <p>
+
                 Destination:
+
                 <strong id="reviewDestination">
-                    Bank Account
+                    —
                 </strong>
+
             </p>
+
 
             <button
                 class="button"
@@ -302,6 +436,7 @@
             >
                 Confirm Withdrawal
             </button>
+
 
             <p id="withdrawMessage"></p>
 
@@ -311,121 +446,215 @@
 
 </main>
 
+
 <footer>
+
     © 2026 Bright Wealth Investments
+
 </footer>
+
 
 <script>
 
-const AVAILABLE_BALANCE = 25450;
-const PROCESSING_FEE = 600;
+    const AVAILABLE_BALANCE = 25450;
 
-function money(amount) {
+    const PROCESSING_FEE = 600;
 
-    return "$" + amount.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
 
-}
+    function money(amount) {
 
-function reviewWithdrawal() {
-
-    const amount = Number(
-        document.getElementById("withdrawAmount").value
-    );
-
-    const destination =
-        document.getElementById("destination").value;
-
-    if (!amount || amount <= 0) {
-
-        alert("Enter a valid withdrawal amount.");
-
-        return;
-    }
-
-    if (amount > AVAILABLE_BALANCE) {
-
-        alert("Amount exceeds the available balance.");
-
-        return;
-    }
-
-    if (!destination) {
-
-        alert("Select a withdrawal destination.");
-
-        return;
-    }
-
-    if (amount <= PROCESSING_FEE) {
-
-        alert(
-            "The withdrawal amount must be greater than the processing fee."
-        );
-
-        return;
-    }
-
-    document.getElementById("reviewAmount").textContent =
-        money(amount);
-
-    document.getElementById("fee").textContent =
-        money(PROCESSING_FEE);
-
-    document.getElementById("receiveAmount").textContent =
-        money(amount - PROCESSING_FEE);
-
-    document.getElementById("reviewDestination").textContent =
-        "Bank Account";
-
-    document.getElementById("withdrawReview").style.display =
-        "block";
-
-    document.getElementById("withdrawMessage").textContent = "";
-
-}
-
-async function confirmWithdrawal() {
-
-    const amount = Number(
-        document.getElementById("withdrawAmount").value
-    );
-
-    try {
-
-        const response = await fetch(
-            "http://localhost:3000/withdraw",
+        return "$" + amount.toLocaleString(
+            "en-US",
             {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    amount: amount
-                })
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
             }
         );
 
-        const data = await response.json();
+    }
+
+
+    function reviewWithdrawal() {
+
+        const amount = Number(
+            document.getElementById(
+                "withdrawAmount"
+            ).value
+        );
+
+
+        const destination =
+            document.getElementById(
+                "destination"
+            ).value;
+
+
+        if (!amount || amount <= 0) {
+
+            alert(
+                "Enter a valid withdrawal amount."
+            );
+
+            return;
+        }
+
+
+        if (amount > AVAILABLE_BALANCE) {
+
+            alert(
+                "Amount exceeds the available balance."
+            );
+
+            return;
+        }
+
+
+        if (!destination) {
+
+            alert(
+                "Select your bank."
+            );
+
+            return;
+        }
+
+
+        if (amount <= PROCESSING_FEE) {
+
+            alert(
+                "The withdrawal amount must be greater than the processing fee."
+            );
+
+            return;
+        }
+
+
+        const destinationNames = {
+
+            "chime":
+                "Chime",
+
+            "bank-of-america":
+                "Bank of America",
+
+            "chase":
+                "Chase",
+
+            "wells-fargo":
+                "Wells Fargo",
+
+            "citibank":
+                "Citibank",
+
+            "capital-one":
+                "Capital One",
+
+            "us-bank":
+                "U.S. Bank"
+
+        };
+
 
         document.getElementById(
-            "withdrawMessage"
-        ).textContent = data.message;
-
-    } catch (error) {
-
-        document.getElementById(
-            "withdrawMessage"
+            "reviewAmount"
         ).textContent =
-            "Unable to submit withdrawal request.";
+            money(amount);
+
+
+        document.getElementById(
+            "fee"
+        ).textContent =
+            money(PROCESSING_FEE);
+
+
+        document.getElementById(
+            "receiveAmount"
+        ).textContent =
+            money(
+                amount - PROCESSING_FEE
+            );
+
+
+        document.getElementById(
+            "reviewDestination"
+        ).textContent =
+            destinationNames[destination];
+
+
+        document.getElementById(
+            "withdrawReview"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "withdrawMessage"
+        ).textContent = "";
 
     }
 
-}
+
+    async function confirmWithdrawal() {
+
+        const amount = Number(
+            document.getElementById(
+                "withdrawAmount"
+            ).value
+        );
+
+
+        const destination =
+            document.getElementById(
+                "destination"
+            ).value;
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "http://localhost:3000/withdraw",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            amount: amount,
+
+                            destination:
+                                destination
+
+                        })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            document.getElementById(
+                "withdrawMessage"
+            ).textContent =
+                data.message;
+
+
+        } catch (error) {
+
+            document.getElementById(
+                "withdrawMessage"
+            ).textContent =
+                "Unable to submit withdrawal request.";
+
+        }
+
+    }
 
 </script>
 
