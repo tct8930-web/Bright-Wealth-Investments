@@ -63,6 +63,7 @@
             border-radius: 10px;
             margin-bottom: 20px;
             color: #9a3412;
+            line-height: 1.5;
         }
 
         .cards {
@@ -110,24 +111,11 @@
             border-bottom: 1px solid #e5e7eb;
             display: flex;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .activity-item:last-child {
             border-bottom: none;
-        }
-
-        .button {
-            background: #16a34a;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .button:hover {
-            background: #15803d;
         }
 
         .withdraw {
@@ -138,6 +126,40 @@
             box-shadow: 0 5px 18px rgba(0,0,0,.08);
         }
 
+        .withdraw input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .button {
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .button:hover {
+            background: #15803d;
+        }
+
+        .button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #withdrawMessage {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
         footer {
             margin-top: 40px;
             padding: 30px;
@@ -145,11 +167,18 @@
             background: #0f172a;
             color: #cbd5e1;
             font-size: 13px;
+            line-height: 1.8;
         }
 
         @media (max-width: 750px) {
+
             .cards {
                 grid-template-columns: 1fr;
+            }
+
+            .activity-item {
+                flex-direction: column;
+                gap: 5px;
             }
         }
     </style>
@@ -168,25 +197,30 @@
         >
 
         <div>
+
             <h1>Bright Wealth Investments</h1>
-            <p>Investment Dashboard</p>
+
+            <p>Account Overview</p>
+
         </div>
 
     </div>
 
 </header>
 
+
 <div class="container">
 
     <div class="notice">
 
-        <strong>Practice Dashboard</strong><br>
+        <strong>Practice Account</strong><br>
 
         This website is a learning project.
         The displayed balances and transactions are fictional
         and are not connected to real investment accounts.
 
     </div>
+
 
     <div class="cards">
 
@@ -200,6 +234,7 @@
 
         </div>
 
+
         <div class="card">
 
             <h3>Total Profit</h3>
@@ -209,6 +244,7 @@
             </div>
 
         </div>
+
 
         <div class="card">
 
@@ -222,6 +258,7 @@
 
     </div>
 
+
     <div class="section">
 
         <h2>Recent Activity</h2>
@@ -229,68 +266,179 @@
         <div class="activity">
 
             <div class="activity-item">
+
                 <span>Investment Deposit</span>
-                <span class="green">+$10,000.00</span>
+
+                <span class="green">
+                    +$10,000.00
+                </span>
+
             </div>
 
+
             <div class="activity-item">
+
                 <span>Portfolio Growth</span>
-                <span class="green">+$2,500.00</span>
+
+                <span class="green">
+                    +$2,500.00
+                </span>
+
             </div>
 
+
             <div class="activity-item">
+
                 <span>Account Growth</span>
-                <span class="green">+$1,250.00</span>
+
+                <span class="green">
+                    +$1,250.00
+                </span>
+
             </div>
 
+
             <div class="activity-item">
+
                 <span>Portfolio Update</span>
-                <span class="green">+$1,700.00</span>
+
+                <span class="green">
+                    +$1,700.00
+                </span>
+
             </div>
 
         </div>
 
     </div>
 
+
     <div class="withdraw">
 
         <h2>Withdraw Funds</h2>
 
         <p>
-            Connect this button to a properly authorized
-            payment provider when building a legitimate
-            financial application.
+            Enter an amount to submit a withdrawal request.
         </p>
 
-        <button class="button" onclick="withdraw()">
+        <input
+            type="number"
+            id="withdrawAmount"
+            placeholder="Enter withdrawal amount"
+            min="1"
+        >
+
+        <button
+            class="button"
+            id="withdrawButton"
+            onclick="withdraw()"
+        >
             Withdraw
         </button>
+
+        <p id="withdrawMessage"></p>
 
     </div>
 
 </div>
 
+
 <footer>
 
     © 2026 Bright Wealth Investments
 
-    <br><br>
+    <br>
 
     Practice website — fictional data only.
 
 </footer>
 
+
 <script>
 
-    function withdraw() {
+async function withdraw() {
 
-        alert(
-            "Withdrawal feature is not connected yet.\n\n" +
-            "A real financial application requires a " +
-            "properly authorized payment provider and backend."
+    const amountInput =
+        document.getElementById("withdrawAmount");
+
+    const button =
+        document.getElementById("withdrawButton");
+
+    const message =
+        document.getElementById("withdrawMessage");
+
+    const amount =
+        Number(amountInput.value);
+
+
+    if (!amount || amount <= 0) {
+
+        message.textContent =
+            "Please enter a valid withdrawal amount.";
+
+        return;
+    }
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "Processing...";
+
+    message.textContent =
+        "Sending withdrawal request...";
+
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:3000/withdraw",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    amount: amount
+                })
+            }
         );
 
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Withdrawal request failed."
+            );
+        }
+
+
+        message.textContent =
+            data.message;
+
+
+    } catch (error) {
+
+        message.textContent =
+            "The withdrawal server is not connected. " +
+            "Make sure your backend is running.";
+
     }
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "Withdraw";
+
+}
 
 </script>
 
