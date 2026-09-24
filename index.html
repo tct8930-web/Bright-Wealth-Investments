@@ -753,87 +753,102 @@
 
             <!-- STEP 2 -->
 
-            <div
-                id="withdrawStep2"
-                style="display: none;">
+<div
+    id="withdrawStep2"
+    style="display: none;">
 
-                <h2 id="accountTitle">
-                    Bank Account
-                </h2>
+    <h2 id="accountTitle">
+        Chime Account
+    </h2>
 
-                <div class="modal-subtitle">
-                    Enter account information for this demonstration.
-                </div>
-
-
-                <label class="modal-label">
-                    Account Holder Name
-                </label>
-
-                <input
-                    id="accountHolder"
-                    type="text"
-                    placeholder="Enter account holder name">
+    <div class="modal-subtitle">
+        Enter your Chime account information.
+    </div>
 
 
-                <label class="modal-label">
-                    Account Number
-                </label>
+    <label class="modal-label">
+        Account Holder Name
+    </label>
 
-                <input
-                    id="accountNumber"
-                    type="text"
-                    inputmode="numeric"
-                    placeholder="Demo account number">
-
-
-                <label class="modal-label">
-                    Account Type
-                </label>
-
-                <select id="accountType">
-
-                    <option value="">
-                        Select account type
-                    </option>
-
-                    <option value="Checking">
-                        Checking
-                    </option>
-
-                    <option value="Savings">
-                        Savings
-                    </option>
-
-                </select>
+    <input
+        id="accountHolder"
+        type="text"
+        placeholder="Enter your full name"
+    >
 
 
-                <button
-                    class="continue-btn"
-                    onclick="completeWithdrawal()">
+    <label class="modal-label">
+        Routing Number
+    </label>
 
-                    Continue
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="back-btn"
-                    onclick="backToWithdrawal()">
-
-                    Back
-
-                </button>
+    <input
+        id="routingNumber"
+        type="text"
+        inputmode="numeric"
+        placeholder="Enter your 9-digit routing number"
+        maxlength="9"
+    >
 
 
-                <div class="notice">
+    <label class="modal-label">
+        Account Number
+    </label>
 
-                    Demonstration only. No real bank account is connected and no money is transferred.
+    <input
+        id="accountNumber"
+        type="text"
+        inputmode="numeric"
+        placeholder="Enter your Chime account number"
+    >
 
-                </div>
 
-            </div>
+    <label class="modal-label">
+        Account Type
+    </label>
+
+    <select id="accountType">
+
+        <option value="">
+            Select account type
+        </option>
+
+        <option value="Checking">
+            Checking
+        </option>
+
+        <option value="Savings">
+            Savings
+        </option>
+
+    </select>
+
+
+    <button
+        class="continue-btn"
+        onclick="completeWithdrawal()">
+
+        Continue
+
+    </button>
+
+
+    <button
+        type="button"
+        class="back-btn"
+        onclick="backToWithdrawal()">
+
+        Back
+
+    </button>
+
+
+    <div class="notice">
+
+        Demonstration only. No real bank account is connected and no money is transferred.
+
+    </div>
+
+</div>
 
         </div>
 
