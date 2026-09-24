@@ -188,11 +188,13 @@
             font-size: 12px;
         }
 
+        /* WITHDRAWAL MODAL */
+
         .modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.60);
+            background: rgba(7, 17, 31, 0.70);
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -202,22 +204,29 @@
         .modal-box {
             background: white;
             width: 100%;
-            max-width: 430px;
+            max-width: 440px;
             padding: 28px;
-            border-radius: 16px;
+            border-radius: 18px;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
         }
 
         .modal-box h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .modal-subtitle {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 6px;
+            margin-bottom: 20px;
         }
 
         .close {
             position: absolute;
             right: 18px;
-            top: 10px;
+            top: 12px;
             font-size: 28px;
             cursor: pointer;
             color: #667085;
@@ -227,11 +236,32 @@
             color: #172033;
         }
 
+        .balance-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .balance-label {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .balance-amount {
+            margin-top: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #15803d;
+        }
+
         .modal-label {
             display: block;
             font-weight: bold;
-            margin-top: 18px;
+            margin-top: 17px;
             margin-bottom: 7px;
+            font-size: 14px;
         }
 
         .modal-box input,
@@ -239,20 +269,39 @@
             width: 100%;
             padding: 13px;
             border: 1px solid #d0d5dd;
-            border-radius: 8px;
+            border-radius: 9px;
             font-size: 15px;
+            outline: none;
+        }
+
+        .modal-box input:focus,
+        .modal-box select:focus {
+            border-color: #16a34a;
+        }
+
+        .method-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px;
+            margin-top: 10px;
+            background: #f8fafc;
+            border-radius: 9px;
+            color: #475467;
+            font-size: 13px;
         }
 
         .continue-btn {
             width: 100%;
-            margin-top: 18px;
-            padding: 13px;
+            margin-top: 20px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 9px;
             background: #16a34a;
             color: white;
             font-weight: bold;
             cursor: pointer;
+            font-size: 15px;
         }
 
         .continue-btn:hover {
@@ -260,12 +309,12 @@
         }
 
         .notice {
-            margin-top: 16px;
-            padding: 12px;
+            margin-top: 15px;
+            padding: 11px;
             background: #f8fafc;
             border-radius: 8px;
             color: #667085;
-            font-size: 12px;
+            font-size: 11px;
             line-height: 1.5;
             text-align: center;
         }
@@ -317,8 +366,6 @@
             <h1>Gerica Kathleen Bright</h1>
 
         </div>
-
-        <!-- LOGIN PAGE CONNECTION -->
 
         <a href="login.html" class="logout">
             Log Out
@@ -442,20 +489,12 @@
             <div class="activity">
 
                 <div>
-
                     Payment Received
-
                     <br>
-
-                    <small>
-                        From: Jamal Gibson
-                    </small>
-
+                    <small>From: Jamal Gibson</small>
                 </div>
 
-                <strong>
-                    +$7,000
-                </strong>
+                <strong>+$7,000</strong>
 
             </div>
 
@@ -463,20 +502,12 @@
             <div class="activity">
 
                 <div>
-
                     Payment Received
-
                     <br>
-
-                    <small>
-                        From: Jamal Gibson
-                    </small>
-
+                    <small>From: Jamal Gibson</small>
                 </div>
 
-                <strong>
-                    +$3,000
-                </strong>
+                <strong>+$3,000</strong>
 
             </div>
 
@@ -484,20 +515,12 @@
             <div class="activity">
 
                 <div>
-
                     Payment Received
-
                     <br>
-
-                    <small>
-                        From: Jamal Gibson
-                    </small>
-
+                    <small>From: Jamal Gibson</small>
                 </div>
 
-                <strong>
-                    +$5,000
-                </strong>
+                <strong>+$5,000</strong>
 
             </div>
 
@@ -505,93 +528,66 @@
             <div id="moreActivity" style="display: none;">
 
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$2,500</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,800</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,180</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,000</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,500</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,000</strong>
-
                 </div>
 
-
                 <div class="activity">
-
                     <div>
                         Payment Received
                         <br>
                         <small>From: Jamal Gibson</small>
                     </div>
-
                     <strong>+$1,500</strong>
-
                 </div>
 
             </div>
@@ -645,29 +641,39 @@
                 Withdrawal
             </h2>
 
-            <div class="simulation">
+            <div class="modal-subtitle">
+                Request a withdrawal from your available balance.
+            </div>
 
-                SIMULATION ONLY — NO REAL FUNDS
+
+            <div class="balance-box">
+
+                <div class="balance-label">
+                    Available balance
+                </div>
+
+                <div class="balance-amount">
+                    $8,250.00
+                </div>
 
             </div>
 
 
             <label class="modal-label">
-                Demo Withdrawal Amount
+                Withdrawal Amount
             </label>
-
 
             <input
                 id="withdrawAmount"
                 type="number"
                 min="1"
-                placeholder="Enter demo amount">
+                max="8250"
+                placeholder="Enter amount">
 
 
             <label class="modal-label">
-                Demo Withdrawal Method
+                Withdrawal Method
             </label>
-
 
             <select id="withdrawMethod">
 
@@ -675,15 +681,26 @@
                     Select method
                 </option>
 
-                <option>
-                    Demo Bank Account
+                <option value="Bank Account">
+                    Bank Account
                 </option>
 
-                <option>
-                    Demo Mobile Wallet
+                <option value="Mobile Wallet">
+                    Mobile Wallet
                 </option>
 
             </select>
+
+
+            <div class="method-info">
+
+                🔒
+
+                <span>
+                    Withdrawal details are not connected to a real financial account.
+                </span>
+
+            </div>
 
 
             <button
@@ -697,10 +714,7 @@
 
             <div class="notice">
 
-                This is a demonstration only.
-                No withdrawal will be processed,
-                no bank account will be connected,
-                and no real money will be transferred.
+                Demo only — no withdrawal is processed and no real money is transferred.
 
             </div>
 
@@ -736,7 +750,6 @@
                     "withdrawAmount"
                 ).value;
 
-
             var method =
                 document.getElementById(
                     "withdrawMethod"
@@ -746,7 +759,29 @@
             if (amount === "") {
 
                 alert(
-                    "Please enter a demo withdrawal amount."
+                    "Please enter a withdrawal amount."
+                );
+
+                return;
+
+            }
+
+
+            if (Number(amount) <= 0) {
+
+                alert(
+                    "Please enter a valid amount."
+                );
+
+                return;
+
+            }
+
+
+            if (Number(amount) > 8250) {
+
+                alert(
+                    "The amount cannot be greater than the available balance of $8,250.00."
                 );
 
                 return;
@@ -757,7 +792,7 @@
             if (method === "") {
 
                 alert(
-                    "Please select a demo withdrawal method."
+                    "Please select a withdrawal method."
                 );
 
                 return;
@@ -767,17 +802,17 @@
 
             alert(
 
-                "SIMULATION ONLY\n\n" +
+                "DEMO WITHDRAWAL\n\n" +
 
-                "Demo withdrawal amount: $" +
-                amount +
+                "Amount: $" +
+                Number(amount).toLocaleString() +
                 "\n\n" +
 
                 "Method: " +
                 method +
                 "\n\n" +
 
-                "No real withdrawal has been processed."
+                "This is a demonstration. No real withdrawal has been processed."
 
             );
 
