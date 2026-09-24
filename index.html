@@ -137,17 +137,11 @@
             border-radius: 8px;
         }
 
-        .notice {
-            padding: 12px;
-            background: #fff8e1;
-            border-radius: 7px;
+        #bankDetails {
             margin-top: 15px;
-            font-size: 14px;
-        }
-
-        #withdrawMessage {
-            font-weight: bold;
-            margin-top: 15px;
+            padding: 15px;
+            background: #f4f6f8;
+            border-radius: 8px;
         }
 
         footer {
@@ -196,29 +190,35 @@
     <section class="cards">
 
         <div class="card">
+
             <h3>Total Balance</h3>
 
             <div class="balance">
                 $25,450.00
             </div>
+
         </div>
 
 
         <div class="card">
+
             <h3>Total Profit</h3>
 
             <div class="balance">
                 $5,450.00
             </div>
+
         </div>
 
 
         <div class="card">
+
             <h3>Available Balance</h3>
 
             <div class="balance">
                 $25,450.00
             </div>
+
         </div>
 
     </section>
@@ -230,39 +230,56 @@
 
         <h2>Recent Activity</h2>
 
+
         <div class="activity-row">
-            <span>Investment Deposit</span>
+
+            <span>
+                Investment Deposit
+            </span>
 
             <span class="positive">
                 +$10,000.00
             </span>
+
         </div>
 
 
         <div class="activity-row">
-            <span>Portfolio Growth</span>
+
+            <span>
+                Portfolio Growth
+            </span>
 
             <span class="positive">
                 +$2,500.00
             </span>
+
         </div>
 
 
         <div class="activity-row">
-            <span>Account Growth</span>
+
+            <span>
+                Account Growth
+            </span>
 
             <span class="positive">
                 +$1,250.00
             </span>
+
         </div>
 
 
         <div class="activity-row">
-            <span>Portfolio Update</span>
+
+            <span>
+                Portfolio Update
+            </span>
 
             <span class="positive">
                 +$1,700.00
             </span>
+
         </div>
 
     </section>
@@ -274,6 +291,7 @@
 
         <h2>Withdraw Funds</h2>
 
+
         <p>
             Available Balance:
             <strong>$25,450.00</strong>
@@ -283,6 +301,7 @@
         <label for="withdrawAmount">
             Withdrawal Amount
         </label>
+
 
         <input
             type="number"
@@ -295,6 +314,7 @@
         <label for="destination">
             Withdrawal Destination
         </label>
+
 
         <select id="destination">
 
@@ -429,87 +449,15 @@
         </div>
 
 
+        <!-- THIS BUTTON DOES NOTHING -->
+
         <button
             class="button"
-            onclick="reviewWithdrawal()"
+            type="button"
         >
             Review Withdrawal
         </button>
 
-
-        <!-- REVIEW -->
-
-        <div
-            id="withdrawReview"
-            class="review"
-            style="display:none;"
-        >
-
-            <h3>
-                Review Withdrawal
-            </h3>
-
-
-            <p>
-                Account Holder:
-                <strong id="reviewHolder">—</strong>
-            </p>
-
-
-            <p>
-                Withdrawal Amount:
-                <strong id="reviewAmount">$0.00</strong>
-            </p>
-
-
-            <p>
-                Processing Fee:
-                <strong id="fee">$600.00</strong>
-            </p>
-
-
-            <p>
-                Amount to Receive:
-                <strong id="receiveAmount">$0.00</strong>
-            </p>
-
-
-            <p>
-                Destination:
-                <strong id="reviewDestination">—</strong>
-            </p>
-
-
-            <p>
-                Account Number:
-                <strong id="reviewAccount">—</strong>
-            </p>
-
-
-            <p>
-                Routing Number:
-                <strong id="reviewRouting">—</strong>
-            </p>
-
-
-            <div class="notice">
-                Review the information carefully before submitting.
-                A real transfer requires a secure, authorized payment
-                provider and backend processing.
-            </div>
-
-
-            <button
-                class="button"
-                onclick="submitWithdrawal()"
-            >
-                Submit Withdrawal Request
-            </button>
-
-
-            <p id="withdrawMessage"></p>
-
-        </div>
 
     </section>
 
@@ -517,31 +465,15 @@
 
 
 <footer>
+
     © 2026 Bright Wealth Investments
+
 </footer>
 
 
 <script>
 
-    const AVAILABLE_BALANCE = 25450;
-
-    const PROCESSING_FEE = 600;
-
-
-    function money(amount) {
-
-        return "$" + amount.toLocaleString(
-            "en-US",
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        );
-
-    }
-
-
-    /* SHOW BANK INFORMATION */
+    /* SHOW BANK INFORMATION WHEN A BANK IS SELECTED */
 
     document
         .getElementById("destination")
@@ -549,9 +481,6 @@
 
             const bankDetails =
                 document.getElementById("bankDetails");
-
-            const review =
-                document.getElementById("withdrawReview");
 
 
             if (this.value) {
@@ -562,218 +491,9 @@
 
                 bankDetails.style.display = "none";
 
-                review.style.display = "none";
-
             }
 
         });
-
-
-    /* REVIEW WITHDRAWAL */
-
-    function reviewWithdrawal() {
-
-        const amount = Number(
-            document.getElementById(
-                "withdrawAmount"
-            ).value
-        );
-
-
-        const destination =
-            document.getElementById(
-                "destination"
-            ).value;
-
-
-        const accountHolder =
-            document.getElementById(
-                "accountHolder"
-            ).value.trim();
-
-
-        const accountNumber =
-            document.getElementById(
-                "accountNumber"
-            ).value.trim();
-
-
-        const routingNumber =
-            document.getElementById(
-                "routingNumber"
-            ).value.trim();
-
-
-        if (!amount || amount <= 0) {
-
-            alert(
-                "Enter a valid withdrawal amount."
-            );
-
-            return;
-        }
-
-
-        if (amount > AVAILABLE_BALANCE) {
-
-            alert(
-                "Amount exceeds the available balance."
-            );
-
-            return;
-        }
-
-
-        if (!destination) {
-
-            alert(
-                "Select your bank."
-            );
-
-            return;
-        }
-
-
-        if (!accountHolder) {
-
-            alert(
-                "Enter the account holder name."
-            );
-
-            return;
-        }
-
-
-        if (!accountNumber) {
-
-            alert(
-                "Enter the account number."
-            );
-
-            return;
-        }
-
-
-        if (!routingNumber) {
-
-            alert(
-                "Enter the routing number."
-            );
-
-            return;
-        }
-
-
-        const destinationNames = {
-
-            "chime": "Chime",
-
-            "bank-of-america": "Bank of America",
-
-            "chase": "Chase",
-
-            "wells-fargo": "Wells Fargo",
-
-            "citibank": "Citibank",
-
-            "capital-one": "Capital One",
-
-            "us-bank": "U.S. Bank",
-
-            "pnc": "PNC Bank",
-
-            "truist": "Truist",
-
-            "td-bank": "TD Bank",
-
-            "ally-bank": "Ally Bank",
-
-            "discover-bank": "Discover Bank",
-
-            "fifth-third-bank": "Fifth Third Bank",
-
-            "keybank": "KeyBank",
-
-            "regions-bank": "Regions Bank",
-
-            "huntington-bank": "Huntington Bank",
-
-            "citizens-bank": "Citizens Bank",
-
-            "bmo": "BMO",
-
-            "santander": "Santander Bank"
-
-        };
-
-
-        document.getElementById(
-            "reviewHolder"
-        ).textContent =
-            accountHolder;
-
-
-        document.getElementById(
-            "reviewAmount"
-        ).textContent =
-            money(amount);
-
-
-        document.getElementById(
-            "fee"
-        ).textContent =
-            money(PROCESSING_FEE);
-
-
-        document.getElementById(
-            "receiveAmount"
-        ).textContent =
-            money(
-                amount - PROCESSING_FEE
-            );
-
-
-        document.getElementById(
-            "reviewDestination"
-        ).textContent =
-            destinationNames[destination];
-
-
-        document.getElementById(
-            "reviewAccount"
-        ).textContent =
-            accountNumber;
-
-
-        document.getElementById(
-            "reviewRouting"
-        ).textContent =
-            routingNumber;
-
-
-        document.getElementById(
-            "withdrawReview"
-        ).style.display =
-            "block";
-
-
-        document.getElementById(
-            "withdrawMessage"
-        ).textContent = "";
-
-    }
-
-
-    /* SUBMIT REQUEST */
-
-    function submitWithdrawal() {
-
-        document.getElementById(
-            "withdrawMessage"
-        ).textContent =
-            "Withdrawal request is ready for secure backend processing.";
-
-    }
 
 </script>
 
