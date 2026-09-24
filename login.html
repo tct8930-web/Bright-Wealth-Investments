@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Investment Demo Login</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investment Account Login</title>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,110 +25,359 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
         .login-box {
             background: white;
-            width: 90%;
+            width: 100%;
             max-width: 400px;
             padding: 35px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            text-align: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #16a34a;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
         }
 
         h1 {
-            margin-bottom: 10px;
+            text-align: center;
+            margin: 0 0 8px;
+            font-size: 24px;
         }
 
-        .demo {
-            background: #fff3cd;
-            color: #664d03;
-            padding: 10px;
-            border-radius: 6px;
+        .subtitle {
+            text-align: center;
+            color: #667085;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
             font-size: 14px;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 7px;
         }
 
         input {
             width: 100%;
-            box-sizing: border-box;
             padding: 13px;
-            margin: 8px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #d0d5dd;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #16a34a;
         }
 
         button {
             width: 100%;
-            background: #111;
+            background: #16a34a;
             color: white;
             padding: 13px;
             border: none;
-            border-radius: 6px;
+            border-radius: 7px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
         button:hover {
-            background: #333;
+            background: #15803d;
         }
 
-        .note {
+        .links {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .links a {
+            color: #16a34a;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            display: none;
+            padding: 10px;
+            border-radius: 7px;
+            margin-bottom: 15px;
             font-size: 13px;
-            color: #666;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .demo {
+            margin-top: 22px;
+            padding: 10px;
+            background: #fff3cd;
+            color: #664d03;
+            border-radius: 6px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            color: #98a2b3;
+            font-size: 11px;
             margin-top: 20px;
         }
+
     </style>
+
 </head>
 
 <body>
 
     <div class="login-box">
 
-        <h1>Investment Demo</h1>
-
-        <div class="demo">
-            DEMO ONLY — NO REAL MONEY
+        <div class="logo">
+            GKB
         </div>
 
-        <h2>Login</h2>
+        <h1>Welcome Back</h1>
 
-        <form onsubmit="demoLogin(event)">
+        <div class="subtitle">
+            Sign in to your account
+        </div>
+
+
+        <div id="message" class="message"></div>
+
+
+        <form onsubmit="loginUser(event)">
+
+            <label for="email">
+                Email Address
+            </label>
 
             <input
                 type="email"
                 id="email"
-                placeholder="Enter demo email"
+                placeholder="Enter your email"
                 required
             >
+
+
+            <label for="password">
+                Password
+            </label>
 
             <input
                 type="password"
                 id="password"
-                placeholder="Enter demo password"
+                placeholder="Enter your password"
                 required
             >
 
+
             <button type="submit">
-                Login
+                Log In
             </button>
 
         </form>
 
-        <p class="note">
-            Demo login only. No real accounts, passwords, or funds are used.
-        </p>
+
+        <div class="links">
+
+            <a onclick="forgotPassword()">
+                Forgot Password?
+            </a>
+
+            <br><br>
+
+            <a href="signup.html">
+                Create an Account
+            </a>
+
+        </div>
+
+
+        <div class="demo">
+            Investment account website
+        </div>
+
+
+        <footer>
+            © 2026 Gerica Kathleen Bright
+        </footer>
 
     </div>
 
+
     <script>
-        function demoLogin(event) {
+
+        /*
+         * SUPABASE CONNECTION
+         */
+
+        const SUPABASE_URL =
+            "https://uvpvieyklihsgjzxzwkz.supabase.co";
+
+        const SUPABASE_KEY =
+            "YOUR_NEW_PUBLISHABLE_KEY";
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /*
+         * SHOW MESSAGE
+         */
+
+        function showMessage(message, type) {
+
+            const box =
+                document.getElementById("message");
+
+            box.textContent = message;
+
+            box.className =
+                "message " + type;
+
+            box.style.display = "block";
+        }
+
+
+        /*
+         * LOGIN
+         */
+
+        async function loginUser(event) {
+
             event.preventDefault();
 
-            window.location.href = "dashboard.html";
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            showMessage(
+                "Signing in...",
+                "success"
+            );
+
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email: email,
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                showMessage(
+                    error.message,
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Login successful.
+             *
+             * Change index.html below if your
+             * dashboard has a different filename.
+             */
+
+            window.location.href =
+                "index.html";
+
         }
+
+
+        /*
+         * FORGOT PASSWORD
+         */
+
+        async function forgotPassword() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+
+            if (email === "") {
+
+                showMessage(
+                    "Enter your email address first.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const { error } =
+                await supabaseClient.auth.resetPasswordForEmail(
+                    email,
+                    {
+                        redirectTo:
+                            window.location.origin +
+                            window.location.pathname
+                    }
+                );
+
+
+            if (error) {
+
+                showMessage(
+                    error.message,
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            showMessage(
+                "If an account exists for this email, a password reset link has been sent.",
+                "success"
+            );
+
+        }
+
     </script>
 
 </body>
