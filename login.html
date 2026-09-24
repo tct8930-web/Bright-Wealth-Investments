@@ -6,10 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Investment Account Login</title>
-
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Bright Wealth Investments</title>
 
     <style>
 
@@ -18,142 +15,352 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background: #f4f6f8;
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #172033;
+        }
+
+        header {
+            background: #07111f;
+            color: white;
+            padding: 18px 6%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
 
-        .login-box {
-            background: white;
-            width: 100%;
-            max-width: 400px;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        /* LOGO IMAGE */
         .logo {
-            width: 50px;
-            height: 50px;
-            background: #16a34a;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .logout {
             color: white;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            margin: 0 auto 15px;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 0 0 8px;
-            font-size: 24px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #667085;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 7px;
-        }
-
-        input {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 16px;
-            border: 1px solid #d0d5dd;
-            border-radius: 7px;
-            font-size: 15px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #16a34a;
-        }
-
-        button {
-            width: 100%;
-            background: #16a34a;
-            color: white;
-            padding: 13px;
-            border: none;
-            border-radius: 7px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #15803d;
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .links {
-            text-align: center;
-            margin-top: 18px;
-        }
-
-        .links a {
-            color: #16a34a;
             text-decoration: none;
             font-size: 14px;
+            padding: 9px 14px;
+            border: 1px solid #64748b;
+            border-radius: 7px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+        }
+
+        .welcome {
+            margin-bottom: 20px;
+        }
+
+        .welcome h2 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .card-title {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .amount {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .positive {
+            color: #16a34a;
+            font-size: 14px;
+            margin-top: 7px;
+        }
+
+        .withdraw-btn {
+            margin-top: 15px;
+            padding: 11px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #172033;
+            color: white;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .links a:hover {
-            text-decoration: underline;
+        .withdraw-btn:hover {
+            background: #344054;
         }
 
-        .message {
-            display: none;
-            padding: 10px;
-            border-radius: 7px;
-            margin-bottom: 15px;
-            font-size: 13px;
-        }
-
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .success {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .account-note {
+        .section {
+            background: white;
             margin-top: 22px;
-            padding: 10px;
-            background: #fff3cd;
-            color: #664d03;
-            border-radius: 6px;
-            font-size: 12px;
-            text-align: center;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h3 {
+            margin-top: 0;
+        }
+
+        .chart {
+            height: 180px;
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            padding: 15px 5px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .bar {
+            flex: 1;
+            background: #16a34a;
+            border-radius: 5px 5px 0 0;
+            min-height: 25px;
+        }
+
+        .activity {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+        }
+
+        .activity small {
+            color: #667085;
+        }
+
+        .show-more-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 12px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            background: white;
+            color: #172033;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .show-more-btn:hover {
+            background: #f4f7f9;
         }
 
         footer {
             text-align: center;
+            padding: 30px;
             color: #98a2b3;
-            font-size: 11px;
+            font-size: 12px;
+        }
+
+        /* WITHDRAWAL MODAL */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 17, 31, 0.70);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 440px;
+            padding: 28px;
+            border-radius: 18px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+        }
+
+        .modal-box h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .modal-subtitle {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 6px;
+            margin-bottom: 20px;
+        }
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #667085;
+        }
+
+        .close:hover {
+            color: #172033;
+        }
+
+        .balance-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .balance-label {
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .balance-amount {
+            margin-top: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #15803d;
+        }
+
+        .modal-label {
+            display: block;
+            font-weight: bold;
+            margin-top: 17px;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        .modal-box input,
+        .modal-box select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .modal-box input:focus,
+        .modal-box select:focus {
+            border-color: #16a34a;
+        }
+
+        .method-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px;
+            margin-top: 10px;
+            background: #f8fafc;
+            border-radius: 9px;
+            color: #475467;
+            font-size: 13px;
+        }
+
+        .continue-btn {
+            width: 100%;
             margin-top: 20px;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #16a34a;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .continue-btn:hover {
+            background: #15803d;
+        }
+
+        .back-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            background: white;
+            color: #172033;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .back-btn:hover {
+            background: #f4f7f9;
+        }
+
+        .notice {
+            margin-top: 15px;
+            padding: 11px;
+            background: #f8fafc;
+            border-radius: 8px;
+            color: #667085;
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @media (max-width: 750px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .amount {
+                font-size: 25px;
+            }
+
+            .brand h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 38px;
+                height: 38px;
+            }
+
         }
 
     </style>
@@ -162,196 +369,511 @@
 
 <body>
 
-    <div class="login-box">
+    <header>
 
-        <div class="logo">
-            GKB
-        </div>
+        <div class="brand">
 
-        <h1>Welcome Back</h1>
-
-        <div class="subtitle">
-            Sign in to your account
-        </div>
-
-        <div id="message" class="message"></div>
-
-        <form onsubmit="loginUser(event)">
-
-            <label for="email">
-                Email Address
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                autocomplete="email"
-                required
+            <!-- LOGO -->
+            <img
+                src="logo.png"
+                alt="Bright Wealth Investments logo"
+                class="logo"
             >
 
-            <label for="password">
-                Password
-            </label>
+            <h1>Gerica Kathleen Bright</h1>
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                autocomplete="current-password"
-                required
-            >
+        </div>
 
-            <button type="submit" id="loginButton">
-                Log In
+        <a href="login.html" class="logout">
+            Log Out
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="welcome">
+
+            <h2>
+                Welcome Back 👋
+            </h2>
+
+        </div>
+
+
+        <!-- ACCOUNT CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-title">
+                    Portfolio Value
+                </div>
+
+                <div class="amount">
+                    $25,480.00
+                </div>
+
+                <div class="positive">
+                    Current value
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    Available Cash
+                </div>
+
+                <div class="amount">
+                    $8,250.00
+                </div>
+
+                <div class="positive">
+                    Available balance
+                </div>
+
+                <button
+                    class="withdraw-btn"
+                    onclick="showWithdraw()">
+
+                    Withdraw
+
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    Total Return
+                </div>
+
+                <div class="amount">
+                    +$1,980.00
+                </div>
+
+                <div class="positive">
+                    Overall return
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PERFORMANCE -->
+
+        <div class="section">
+
+            <h3>
+                Portfolio Performance
+            </h3>
+
+            <div class="chart">
+
+                <div class="bar" style="height:35%;"></div>
+                <div class="bar" style="height:48%;"></div>
+                <div class="bar" style="height:42%;"></div>
+                <div class="bar" style="height:62%;"></div>
+                <div class="bar" style="height:58%;"></div>
+                <div class="bar" style="height:75%;"></div>
+                <div class="bar" style="height:88%;"></div>
+
+            </div>
+
+            <p class="positive">
+                Simulated portfolio growth
+            </p>
+
+        </div>
+
+
+        <!-- RECENT ACTIVITY -->
+
+        <div class="section">
+
+            <h3>
+                Recent Activity
+            </h3>
+
+
+            <div class="activity">
+
+                <div>
+                    Payment Received
+                    <br>
+                    <small>From: Jamal Gibson</small>
+                </div>
+
+                <strong>+$7,000</strong>
+
+            </div>
+
+
+            <div class="activity">
+
+                <div>
+                    Payment Received
+                    <br>
+                    <small>From: Jamal Gibson</small>
+                </div>
+
+                <strong>+$3,000</strong>
+
+            </div>
+
+
+            <div class="activity">
+
+                <div>
+                    Payment Received
+                    <br>
+                    <small>From: Jamal Gibson</small>
+                </div>
+
+                <strong>+$5,000</strong>
+
+            </div>
+
+
+            <div id="moreActivity" style="display: none;">
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$2,500</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,800</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,180</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,000</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,500</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,000</strong>
+                </div>
+
+                <div class="activity">
+                    <div>
+                        Payment Received
+                        <br>
+                        <small>From: Jamal Gibson</small>
+                    </div>
+                    <strong>+$1,500</strong>
+                </div>
+
+            </div>
+
+
+            <button
+                id="showMoreBtn"
+                class="show-more-btn"
+                onclick="showMoreActivity()">
+
+                Show More
+
             </button>
 
-        </form>
-
-        <div class="links">
-
-            <a href="#" onclick="forgotPassword(event)">
-                Forgot Password?
-            </a>
-
         </div>
 
-        <div class="account-note">
-            Investment account website
-        </div>
 
-        <footer>
-            © 2026 Gerica Kathleen Bright
-        </footer>
+    </main>
+
+
+    <footer>
+        ©️ 2026 Bright Wealth Investments. All rights reserved.
+        <br>
+        Privacy Policy · Terms of Service · Disclosures
+        <br>
+        Registration Number: 6476231
+        <br>
+        License/Reference Number: 09-5457603-3
+        <br>
+        <strong>DEMONSTRATION WEBSITE — NO REAL INVESTMENTS OR MONEY TRANSFERS</strong>
+    </footer>
+
+
+    <!-- WITHDRAWAL POPUP -->
+
+    <div
+        id="withdrawModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <span
+                class="close"
+                onclick="closeWithdraw()">
+
+                ×
+
+            </span>
+
+
+            <!-- STEP 1 -->
+
+            <div id="withdrawStep1">
+
+                <h2>
+                    Withdrawal
+                </h2>
+
+                <div class="modal-subtitle">
+                    Choose your withdrawal method.
+                </div>
+
+
+                <div class="balance-box">
+
+                    <div class="balance-label">
+                        Available balance
+                    </div>
+
+                    <div class="balance-amount">
+                        $8,250.00
+                    </div>
+
+                </div>
+
+
+                <label class="modal-label">
+                    Withdrawal Amount
+                </label>
+
+                <input
+                    id="withdrawAmount"
+                    type="number"
+                    min="1"
+                    max="8250"
+                    placeholder="Enter demo amount">
+
+
+                <label class="modal-label">
+                    Withdrawal Method
+                </label>
+
+                <select id="withdrawMethod">
+
+                    <option value="">
+                        Select method
+                    </option>
+
+                    <option value="Demo Bank">
+                        Demo Bank
+                    </option>
+
+                    <option value="Mobile Wallet">
+                        Demo Mobile Wallet
+                    </option>
+
+                </select>
+
+
+                <div class="method-info">
+
+                    🔒
+
+                    <span>
+                        This demonstration is not connected to a real financial account.
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="continue-btn"
+                    onclick="goToAccountDetails()">
+
+                    Continue
+
+                </button>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div
+                id="withdrawStep2"
+                style="display: none;">
+
+                <h2 id="accountTitle">
+                    Demo Account
+                </h2>
+
+                <div class="modal-subtitle">
+                    Enter demonstration account information.
+                </div>
+
+
+                <label class="modal-label">
+                    Account Holder Name
+                </label>
+
+                <input
+                    id="accountHolder"
+                    type="text"
+                    placeholder="Demo name only"
+                >
+
+
+                <label class="modal-label">
+                    Demo Account Number
+                </label>
+
+                <input
+                    id="accountNumber"
+                    type="text"
+                    placeholder="Demo account number"
+                >
+
+
+                <label class="modal-label">
+                    Account Type
+                </label>
+
+                <select id="accountType">
+
+                    <option value="">
+                        Select account type
+                    </option>
+
+                    <option value="Checking">
+                        Checking
+                    </option>
+
+                    <option value="Savings">
+                        Savings
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="continue-btn"
+                    onclick="completeWithdrawal()">
+
+                    Continue
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="back-btn"
+                    onclick="backToWithdrawal()">
+
+                    Back
+
+                </button>
+
+
+                <div class="notice">
+
+                    Demonstration only. No real bank account is connected and no money is transferred.
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 
     <script>
 
-        /*
-         * SUPABASE CONNECTION
-         */
+        function showWithdraw() {
 
-        const SUPABASE_URL =
-            "https://uvpvieyklihsgjzxzwkz.supabase.co";
-
-        const SUPABASE_KEY =
-            "PASTE_YOUR_NEW_PUBLISHABLE_KEY_HERE";
-
-        const supabaseClient =
-            supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
+            document.getElementById(
+                "withdrawModal"
+            ).style.display = "flex";
 
 
-        /*
-         * SHOW MESSAGE
-         */
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display = "block";
 
-        function showMessage(message, type) {
 
-            const box =
-                document.getElementById("message");
-
-            box.textContent = message;
-
-            box.className =
-                "message " + type;
-
-            box.style.display = "block";
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display = "none";
 
         }
 
 
-        /*
-         * LOGIN
-         */
+        function closeWithdraw() {
 
-        async function loginUser(event) {
-
-            event.preventDefault();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-            const button =
-                document.getElementById("loginButton");
-
-            button.disabled = true;
-
-            button.textContent =
-                "Signing in...";
-
-            showMessage(
-                "Signing in...",
-                "success"
-            );
-
-            const { error } =
-                await supabaseClient.auth.signInWithPassword({
-
-                    email: email,
-
-                    password: password
-
-                });
-
-
-            if (error) {
-
-                button.disabled = false;
-
-                button.textContent =
-                    "Log In";
-
-                showMessage(
-                    error.message,
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            showMessage(
-                "Login successful. Opening your dashboard...",
-                "success"
-            );
-
-
-            setTimeout(function() {
-
-                window.location.href =
-                    "index.html";
-
-            }, 700);
+            document.getElementById(
+                "withdrawModal"
+            ).style.display = "none";
 
         }
 
 
-        /*
-         * FORGOT PASSWORD
-         */
+        function goToAccountDetails() {
 
-        async function forgotPassword(event) {
-
-            event.preventDefault();
-
-            const email =
-                document.getElementById("email").value.trim();
+            var amount =
+                document.getElementById(
+                    "withdrawAmount"
+                ).value;
 
 
-            if (email === "") {
+            var method =
+                document.getElementById(
+                    "withdrawMethod"
+                ).value;
 
-                showMessage(
-                    "Enter your email address first.",
-                    "error"
+
+            if (amount === "") {
+
+                alert(
+                    "Please enter a demonstration amount."
                 );
 
                 return;
@@ -359,31 +881,10 @@
             }
 
 
-            showMessage(
-                "Sending password reset link...",
-                "success"
-            );
+            if (Number(amount) <= 0) {
 
-
-            const { error } =
-                await supabaseClient.auth.resetPasswordForEmail(
-
-                    email,
-
-                    {
-                        redirectTo:
-                            window.location.origin +
-                            window.location.pathname
-                    }
-
-                );
-
-
-            if (error) {
-
-                showMessage(
-                    error.message,
-                    "error"
+                alert(
+                    "Please enter a valid demonstration amount."
                 );
 
                 return;
@@ -391,14 +892,147 @@
             }
 
 
-            showMessage(
-                "If an account exists for this email, a password reset link has been sent.",
-                "success"
+            if (Number(amount) > 8250) {
+
+                alert(
+                    "The amount cannot be greater than the demo balance of $8,250.00."
+                );
+
+                return;
+
+            }
+
+
+            if (method === "") {
+
+                alert(
+                    "Please select a demonstration withdrawal method."
+                );
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "accountTitle"
+            ).textContent =
+                method + " Account";
+
+
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display =
+                "block";
+
+        }
+
+
+        function backToWithdrawal() {
+
+            document.getElementById(
+                "withdrawStep2"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "withdrawStep1"
+            ).style.display =
+                "block";
+
+        }
+
+
+        function completeWithdrawal() {
+
+            var holder =
+                document.getElementById(
+                    "accountHolder"
+                ).value;
+
+
+            var account =
+                document.getElementById(
+                    "accountNumber"
+                ).value;
+
+
+            var type =
+                document.getElementById(
+                    "accountType"
+                ).value;
+
+
+            if (holder === "") {
+
+                alert(
+                    "Please enter a demo account holder name."
+                );
+
+                return;
+
+            }
+
+
+            if (account === "") {
+
+                alert(
+                    "Please enter a demo account number."
+                );
+
+                return;
+
+            }
+
+
+            if (type === "") {
+
+                alert(
+                    "Please select an account type."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+
+                "DEMO WITHDRAWAL\n\n" +
+
+                "Your withdrawal request has been completed in the demonstration.\n\n" +
+
+                "No real money has been transferred."
+
             );
+
+        }
+
+
+        function showMoreActivity() {
+
+            document.getElementById(
+                "moreActivity"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "showMoreBtn"
+            ).style.display =
+                "none";
 
         }
 
     </script>
+
 
 </body>
 
