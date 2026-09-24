@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bright Wealth Investments - Practice Account</title>
+    <title>Bright Wealth Investments</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -50,31 +47,10 @@
             margin: 5px 0 0;
         }
 
-        .greeting {
-            max-width: 900px;
-            margin: 25px auto 0;
-            padding: 0 20px;
-        }
-
-        .greeting h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-
         main {
             max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
-        }
-
-        .demo-notice {
-            max-width: 900px;
-            margin: 20px auto 0;
-            padding: 14px 20px;
-            background: #fff3cd;
-            border: 1px solid #ffe69c;
-            border-radius: 8px;
-            color: #664d03;
         }
 
         .cards {
@@ -87,29 +63,21 @@
         .activity,
         .withdraw {
             background: white;
-            padding: 22px;
-            border-radius: 14px;
+            padding: 20px;
+            border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
         }
 
         .card h3 {
-            margin: 0 0 12px;
-            font-size: 14px;
+            margin-top: 0;
+            font-size: 15px;
             color: #666;
-            font-weight: normal;
         }
 
         .balance {
-            font-size: 28px;
+            font-size: 25px;
             font-weight: bold;
-            letter-spacing: 0.3px;
-        }
-
-        .label {
-            margin: 8px 0 0;
-            font-size: 13px;
-            color: #888;
         }
 
         .activity-row {
@@ -142,7 +110,6 @@
             border: 1px solid #ccc;
             border-radius: 7px;
             font-size: 16px;
-            background: white;
         }
 
         .button {
@@ -161,19 +128,11 @@
             background: #07553e;
         }
 
-        #bankDetails {
-            margin-top: 15px;
-            padding: 15px;
-            background: #f4f6f8;
-            border-radius: 8px;
-        }
-
         .review {
             margin-top: 20px;
             padding: 18px;
-            background: #eef7f2;
+            background: #f4f6f8;
             border-radius: 8px;
-            display: none;
         }
 
         footer {
@@ -183,23 +142,16 @@
         }
 
         @media (max-width: 700px) {
-
             .cards {
                 grid-template-columns: 1fr;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
     <div class="brand">
 
         <img
@@ -209,378 +161,273 @@
         >
 
         <div>
-
             <h1>Bright Wealth Investments</h1>
-
-            <p> Account Overview </p>
-
+            <p>Account Overview</p>
         </div>
 
     </div>
-
 </header>
 
-
-<!-- AUTOMATIC GREETING -->
-
-<div class="greeting">
-
-    <h2 id="greetingText">
-        Hello, Gerica Kathleen Bright
-    </h2>
-
-</div>
-
-
-<div class="demo-notice">
-
-    <strong> Investment Account:</strong>
-   
-
-</div>
-
-
 <main>
-
-
-    <!-- BALANCE CARDS -->
 
     <section class="cards">
 
         <div class="card">
-
             <h3>Total Balance</h3>
-
-            <div class="balance">
-                $25,450.00
-            </div>
-
-            <p class="label">
-                Current account balance
-            </p>
-
+            <div class="balance">$25,450.00</div>
         </div>
 
-
         <div class="card">
-
             <h3>Total Profit</h3>
-
-            <div class="balance">
-                $5,450.00
-            </div>
-
-            <p class="label">
-                Total investment growth
-            </p>
-
+            <div class="balance">$5,450.00</div>
         </div>
 
-
         <div class="card">
-
             <h3>Available Balance</h3>
-
-            <div class="balance">
-                $25,450.00
-            </div>
-
-            <p class="label">
-                Available for withdrawal
-            </p>
-
+            <div class="balance">$25,450.00</div>
         </div>
 
     </section>
-
-
-    <!-- RECENT ACTIVITY -->
 
     <section class="activity">
 
         <h2>Recent Activity</h2>
 
-
         <div class="activity-row">
-
-            <span>
-                Investment Deposit
-            </span>
-
-            <span class="positive">
-                +$10,000.00
-            </span>
-
+            <span>Investment Deposit</span>
+            <span class="positive">+$10,000.00</span>
         </div>
 
-
         <div class="activity-row">
-
-            <span>
-                Portfolio Growth
-            </span>
-
-            <span class="positive">
-                +$2,500.00
-            </span>
-
+            <span>Portfolio Growth</span>
+            <span class="positive">+$2,500.00</span>
         </div>
 
-
         <div class="activity-row">
-
-            <span>
-                Account Growth
-            </span>
-
-            <span class="positive">
-                +$1,250.00
-            </span>
-
+            <span>Account Growth</span>
+            <span class="positive">+$1,250.00</span>
         </div>
 
-
         <div class="activity-row">
-
-            <span>
-                Portfolio Update
-            </span>
-
-            <span class="positive">
-                +$1,700.00
-            </span>
-
+            <span>Portfolio Update</span>
+            <span class="positive">+$1,700.00</span>
         </div>
 
     </section>
 
-
-    <!-- PRACTICE WITHDRAWAL -->
-
     <section class="withdraw">
 
-        <h2>Practice Withdrawal</h2>
-
+        <h2>Withdraw Funds</h2>
 
         <p>
             Available Balance:
-            <strong>$25,450.00</strong>
+            <strong id="availableBalance">
+                $25,450.00
+            </strong>
         </p>
-
 
         <label for="withdrawAmount">
             Withdrawal Amount
         </label>
-
 
         <input
             type="number"
             id="withdrawAmount"
             placeholder="Enter amount"
             min="1"
-            max="25450"
         >
-
 
         <label for="destination">
             Withdrawal Destination
         </label>
 
-
         <select id="destination">
 
             <option value="">
-                Select a practice bank
+                Select withdrawal destination
             </option>
 
-            <option>
-                Chime
-            </option>
-
-            <option>
-                Bank of America
-            </option>
-
-            <option>
-                Chase
-            </option>
-
-            <option>
-                Wells Fargo
-            </option>
-
-            <option>
-                Citibank
-            </option>
-
-            <option>
-                Capital One
-            </option>
-
-            <option>
-                U.S. Bank
-            </option>
-
-            <option>
-                PNC Bank
+            <option value="bank">
+                Bank Account
             </option>
 
         </select>
 
-
         <button
             class="button"
-            type="button"
             onclick="reviewWithdrawal()"
         >
             Review Withdrawal
         </button>
 
-
         <div
-            id="review"
+            id="withdrawReview"
             class="review"
+            style="display:none;"
         >
 
-            <h3>Withdrawal Review</h3>
+            <h3>Review Withdrawal</h3>
 
             <p>
-                Amount:
-                <strong id="reviewAmount"></strong>
+                Withdrawal Amount:
+                <strong id="reviewAmount">
+                    $0.00
+                </strong>
+            </p>
+
+            <p>
+                Processing Fee:
+                <strong id="fee">
+                    $600.00
+                </strong>
+            </p>
+
+            <p>
+                Amount to Receive:
+                <strong id="receiveAmount">
+                    $0.00
+                </strong>
             </p>
 
             <p>
                 Destination:
-                <strong id="reviewBank"></strong>
-            </p>
-
-            <p>
-                Status:
-                <strong>Practice Request</strong>
+                <strong id="reviewDestination">
+                    Bank Account
+                </strong>
             </p>
 
             <button
                 class="button"
-                type="button"
-                onclick="submitPracticeWithdrawal()"
+                onclick="confirmWithdrawal()"
             >
-                Submit Practice Request
+                Confirm Withdrawal
             </button>
+
+            <p id="withdrawMessage"></p>
 
         </div>
 
     </section>
 
-
 </main>
 
-
 <footer>
-
     © 2026 Bright Wealth Investments
-
 </footer>
-
 
 <script>
 
-    /* AUTOMATIC TIME-BASED GREETING */
+const AVAILABLE_BALANCE = 25450;
+const PROCESSING_FEE = 600;
 
-    const hour = new Date().getHours();
+function money(amount) {
 
-    const greetingText =
-        document.getElementById("greetingText");
+    return "$" + amount.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 
-    const name = "Gerica Kathleen Bright";
+}
 
+function reviewWithdrawal() {
 
-    if (hour < 12) {
+    const amount = Number(
+        document.getElementById("withdrawAmount").value
+    );
 
-        greetingText.textContent =
-            "Good Morning, " + name;
+    const destination =
+        document.getElementById("destination").value;
 
-    } else if (hour < 18) {
+    if (!amount || amount <= 0) {
 
-        greetingText.textContent =
-            "Good Afternoon, " + name;
+        alert("Enter a valid withdrawal amount.");
 
-    } else {
-
-        greetingText.textContent =
-            "Good Evening, " + name;
-
+        return;
     }
 
+    if (amount > AVAILABLE_BALANCE) {
 
-    /* PRACTICE WITHDRAWAL REVIEW */
+        alert("Amount exceeds the available balance.");
 
-    function reviewWithdrawal() {
-
-        const amount =
-            Number(
-                document.getElementById("withdrawAmount").value
-            );
-
-        const destination =
-            document.getElementById("destination").value;
-
-
-        if (!amount || amount <= 0) {
-
-            alert("Please enter a valid withdrawal amount.");
-
-            return;
-        }
-
-
-        if (amount > 25450) {
-
-            alert(
-                "The amount cannot exceed the practice balance of $25,450.00."
-            );
-
-            return;
-        }
-
-
-        if (!destination) {
-
-            alert("Please select a practice bank.");
-
-            return;
-        }
-
-
-        document.getElementById("reviewAmount").textContent =
-            "$" +
-            amount.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-
-
-        document.getElementById("reviewBank").textContent =
-            destination;
-
-
-        document.getElementById("review").style.display =
-            "block";
-
+        return;
     }
 
+    if (!destination) {
 
-    function submitPracticeWithdrawal() {
+        alert("Select a withdrawal destination.");
+
+        return;
+    }
+
+    if (amount <= PROCESSING_FEE) {
 
         alert(
-            "Practice withdrawal request submitted.\n\n" +
-            "No real money was transferred."
+            "The withdrawal amount must be greater than the processing fee."
         );
 
+        return;
     }
+
+    document.getElementById("reviewAmount").textContent =
+        money(amount);
+
+    document.getElementById("fee").textContent =
+        money(PROCESSING_FEE);
+
+    document.getElementById("receiveAmount").textContent =
+        money(amount - PROCESSING_FEE);
+
+    document.getElementById("reviewDestination").textContent =
+        "Bank Account";
+
+    document.getElementById("withdrawReview").style.display =
+        "block";
+
+    document.getElementById("withdrawMessage").textContent = "";
+
+}
+
+async function confirmWithdrawal() {
+
+    const amount = Number(
+        document.getElementById("withdrawAmount").value
+    );
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:3000/withdraw",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    amount: amount
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        document.getElementById(
+            "withdrawMessage"
+        ).textContent = data.message;
+
+    } catch (error) {
+
+        document.getElementById(
+            "withdrawMessage"
+        ).textContent =
+            "Unable to submit withdrawal request.";
+
+    }
+
+}
 
 </script>
 
-
 </body>
-
 </html>
