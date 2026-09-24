@@ -15,19 +15,19 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f4f6f8;
-            color: #111827;
+            color: #222;
         }
 
         header {
-            background: #0f172a;
+            background: #0b3d2e;
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .logo {
@@ -39,153 +39,111 @@
             padding: 4px;
         }
 
-        .brand h1 {
+        header h1 {
             margin: 0;
-            font-size: 21px;
         }
 
-        .brand p {
+        header p {
             margin: 5px 0 0;
-            color: #cbd5e1;
-            font-size: 13px;
         }
 
-        .container {
-            max-width: 1100px;
+        main {
+            max-width: 900px;
             margin: 30px auto;
             padding: 0 20px;
-        }
-
-        .notice {
-            background: #fff7ed;
-            border: 1px solid #fdba74;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            color: #9a3412;
-            line-height: 1.5;
         }
 
         .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            background: white;
-            padding: 22px;
-            border-radius: 14px;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
-        }
-
-        .card h3 {
-            margin: 0;
-            color: #64748b;
-            font-size: 15px;
-        }
-
-        .balance {
-            margin-top: 10px;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .green {
-            color: #16a34a;
-        }
-
-        .section {
-            margin-top: 28px;
-        }
-
-        .activity {
-            background: white;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
-        }
-
-        .activity-item {
-            padding: 17px 20px;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-between;
             gap: 15px;
         }
 
-        .activity-item:last-child {
+        .card,
+        .activity,
+        .withdraw {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .balance {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .activity-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .activity-row:last-child {
             border-bottom: none;
         }
 
-        .withdraw {
-            background: white;
-            padding: 22px;
-            margin-top: 28px;
-            border-radius: 14px;
-            box-shadow: 0 5px 18px rgba(0,0,0,.08);
+        .positive {
+            color: #087f23;
+            font-weight: bold;
         }
 
-        .withdraw input {
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
             width: 100%;
             padding: 13px;
-            margin: 10px 0 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
             font-size: 16px;
         }
 
         .button {
-            background: #16a34a;
-            color: white;
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: 7px;
+            background: #0b3d2e;
+            color: white;
+            font-size: 16px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 15px;
         }
 
         .button:hover {
-            background: #15803d;
-        }
-
-        #withdrawMessage {
-            margin-top: 15px;
-            font-weight: bold;
+            background: #07553e;
         }
 
         .review {
             margin-top: 20px;
             padding: 18px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-        }
-
-        .review p {
-            margin: 10px 0;
+            background: #f4f6f8;
+            border-radius: 8px;
         }
 
         footer {
-            margin-top: 40px;
-            padding: 30px;
             text-align: center;
-            background: #0f172a;
-            color: #cbd5e1;
-            font-size: 13px;
-            line-height: 1.8;
+            padding: 25px;
+            color: #777;
         }
 
-        @media (max-width: 750px) {
-
+        @media (max-width: 700px) {
             .cards {
                 grid-template-columns: 1fr;
-            }
-
-            .activity-item {
-                flex-direction: column;
-                gap: 5px;
             }
         }
     </style>
@@ -194,7 +152,6 @@
 <body>
 
 <header>
-
     <div class="brand">
 
         <img
@@ -204,141 +161,104 @@
         >
 
         <div>
-
             <h1>Bright Wealth Investments</h1>
-
             <p>Account Overview</p>
-
         </div>
 
     </div>
-
 </header>
 
+<main>
 
-<div class="container">
-
-    <div class="notice">
-
-        <strong>Practice Account</strong><br>
-
-        This website is a learning project.
-        The displayed balances and transactions are fictional
-        and are not connected to real investment accounts.
-
-    </div>
-
-
-    <div class="cards">
+    <section class="cards">
 
         <div class="card">
-
             <h3>Total Balance</h3>
-
-            <div class="balance">
-                $25,450.00
-            </div>
-
+            <div class="balance">$25,450.00</div>
         </div>
 
-
         <div class="card">
-
             <h3>Total Profit</h3>
-
-            <div class="balance green">
-                $5,450.00
-            </div>
-
+            <div class="balance">$5,450.00</div>
         </div>
-
 
         <div class="card">
-
             <h3>Available Balance</h3>
-
-            <div class="balance">
-                $25,450.00
-            </div>
-
+            <div class="balance">$25,450.00</div>
         </div>
 
-    </div>
+    </section>
 
-
-    <div class="section">
+    <section class="activity">
 
         <h2>Recent Activity</h2>
 
-        <div class="activity">
-
-            <div class="activity-item">
-                <span>Investment Deposit</span>
-
-                <span class="green">
-                    +$10,000.00
-                </span>
-            </div>
-
-
-            <div class="activity-item">
-                <span>Portfolio Growth</span>
-
-                <span class="green">
-                    +$2,500.00
-                </span>
-            </div>
-
-
-            <div class="activity-item">
-                <span>Account Growth</span>
-
-                <span class="green">
-                    +$1,250.00
-                </span>
-            </div>
-
-
-            <div class="activity-item">
-                <span>Portfolio Update</span>
-
-                <span class="green">
-                    +$1,700.00
-                </span>
-            </div>
-
+        <div class="activity-row">
+            <span>Investment Deposit</span>
+            <span class="positive">+$10,000.00</span>
         </div>
 
-    </div>
+        <div class="activity-row">
+            <span>Portfolio Growth</span>
+            <span class="positive">+$2,500.00</span>
+        </div>
 
+        <div class="activity-row">
+            <span>Account Growth</span>
+            <span class="positive">+$1,250.00</span>
+        </div>
 
-    <!-- WITHDRAWAL SECTION -->
+        <div class="activity-row">
+            <span>Portfolio Update</span>
+            <span class="positive">+$1,700.00</span>
+        </div>
 
-    <div class="withdraw">
+    </section>
+
+    <section class="withdraw">
 
         <h2>Withdraw Funds</h2>
 
         <p>
             Available Balance:
-            <strong>$25,450.00</strong>
+            <strong id="availableBalance">
+                $25,450.00
+            </strong>
         </p>
+
+        <label for="withdrawAmount">
+            Withdrawal Amount
+        </label>
 
         <input
             type="number"
             id="withdrawAmount"
-            placeholder="Enter withdrawal amount"
+            placeholder="Enter amount"
             min="1"
         >
+
+        <label for="destination">
+            Withdrawal Destination
+        </label>
+
+        <select id="destination">
+
+            <option value="">
+                Select withdrawal destination
+            </option>
+
+            <option value="bank">
+                Bank Account
+            </option>
+
+        </select>
 
         <button
             class="button"
             onclick="reviewWithdrawal()"
         >
-            Withdraw
+            Review Withdrawal
         </button>
-
-
-        <!-- REVIEW AREA -->
 
         <div
             id="withdrawReview"
@@ -357,11 +277,13 @@
 
             <p>
                 Processing Fee:
-                <strong>$600.00</strong>
+                <strong id="fee">
+                    $600.00
+                </strong>
             </p>
 
             <p>
-                Amount You Receive:
+                Amount to Receive:
                 <strong id="receiveAmount">
                     $0.00
                 </strong>
@@ -369,11 +291,10 @@
 
             <p>
                 Destination:
-                <strong>
-                    Practice Account
+                <strong id="reviewDestination">
+                    Bank Account
                 </strong>
             </p>
-
 
             <button
                 class="button"
@@ -382,94 +303,127 @@
                 Confirm Withdrawal
             </button>
 
-
             <p id="withdrawMessage"></p>
 
         </div>
 
-    </div>
+    </section>
 
-</div>
-
+</main>
 
 <footer>
-
     © 2026 Bright Wealth Investments
-
-    <br>
-
-    Practice website — fictional data only.
-
 </footer>
-
 
 <script>
 
-function reviewWithdrawal() {
+const AVAILABLE_BALANCE = 25450;
+const PROCESSING_FEE = 600;
 
-    const amount =
-        Number(
-            document.getElementById("withdrawAmount").value
-        );
+function money(amount) {
 
-    const balance = 25450;
-
-
-    if (!amount || amount <= 0) {
-
-        alert(
-            "Please enter a valid withdrawal amount."
-        );
-
-        return;
-    }
-
-
-    if (amount > balance) {
-
-        alert(
-            "Withdrawal amount exceeds available balance."
-        );
-
-        return;
-    }
-
-
-    const formattedAmount =
-        "$" +
-        amount.toLocaleString("en-US", {
-            minimumFractionDigits: 2
-        });
-
-
-    document.getElementById(
-        "reviewAmount"
-    ).textContent = formattedAmount;
-
-
-    document.getElementById(
-        "receiveAmount"
-    ).textContent = formattedAmount;
-
-
-    document.getElementById(
-        "withdrawReview"
-    ).style.display = "block";
-
-
-    document.getElementById(
-        "withdrawMessage"
-    ).textContent = "";
+    return "$" + amount.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 
 }
 
+function reviewWithdrawal() {
 
-function confirmWithdrawal() {
+    const amount = Number(
+        document.getElementById("withdrawAmount").value
+    );
 
-    document.getElementById(
-        "withdrawMessage"
-    ).textContent =
-        "Practice withdrawal submitted successfully. No real money was transferred.";
+    const destination =
+        document.getElementById("destination").value;
+
+    if (!amount || amount <= 0) {
+
+        alert("Enter a valid withdrawal amount.");
+
+        return;
+    }
+
+    if (amount > AVAILABLE_BALANCE) {
+
+        alert("Amount exceeds the available balance.");
+
+        return;
+    }
+
+    if (!destination) {
+
+        alert("Select a withdrawal destination.");
+
+        return;
+    }
+
+    if (amount <= PROCESSING_FEE) {
+
+        alert(
+            "The withdrawal amount must be greater than the processing fee."
+        );
+
+        return;
+    }
+
+    document.getElementById("reviewAmount").textContent =
+        money(amount);
+
+    document.getElementById("fee").textContent =
+        money(PROCESSING_FEE);
+
+    document.getElementById("receiveAmount").textContent =
+        money(amount - PROCESSING_FEE);
+
+    document.getElementById("reviewDestination").textContent =
+        "Bank Account";
+
+    document.getElementById("withdrawReview").style.display =
+        "block";
+
+    document.getElementById("withdrawMessage").textContent = "";
+
+}
+
+async function confirmWithdrawal() {
+
+    const amount = Number(
+        document.getElementById("withdrawAmount").value
+    );
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:3000/withdraw",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    amount: amount
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        document.getElementById(
+            "withdrawMessage"
+        ).textContent = data.message;
+
+    } catch (error) {
+
+        document.getElementById(
+            "withdrawMessage"
+        ).textContent =
+            "Unable to submit withdrawal request.";
+
+    }
 
 }
 
