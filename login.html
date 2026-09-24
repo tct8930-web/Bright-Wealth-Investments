@@ -236,14 +236,8 @@
         const SUPABASE_URL =
             "https://uvpvieyklihsgjzxzwkz.supabase.co";
 
-        /*
-         * IMPORTANT:
-         * Replace the text below with your
-         * Supabase PUBLISHABLE key.
-         */
         const SUPABASE_KEY =
-            "YOUR_NEW_PUBLISHABLE_KEY";
-
+            "PASTE_YOUR_NEW_PUBLISHABLE_KEY_HERE";
 
         const supabaseClient =
             supabase.createClient(
@@ -288,18 +282,15 @@
             const button =
                 document.getElementById("loginButton");
 
-
             button.disabled = true;
 
             button.textContent =
                 "Signing in...";
 
-
             showMessage(
                 "Signing in...",
                 "success"
             );
-
 
             const { error } =
                 await supabaseClient.auth.signInWithPassword({
