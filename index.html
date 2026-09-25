@@ -66,7 +66,7 @@
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
         }
 
         .card h3 {
@@ -81,6 +81,8 @@
         }
 
         .activity-row {
+            display: flex;
+            justify-content: space-between;
             padding: 14px 0;
             border-bottom: 1px solid #eee;
         }
@@ -133,16 +135,6 @@
             border-radius: 8px;
         }
 
-        .demo-notice {
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #fff3cd;
-            border: 1px solid #ffe69c;
-            border-radius: 8px;
-            color: #664d03;
-            font-size: 14px;
-        }
-
         footer {
             text-align: center;
             padding: 25px;
@@ -178,11 +170,6 @@
 
 <main>
 
-    <div class="demo-notice">
-        <strong>Demo Account</strong><br>
-        This page is a demonstration using sample account activity.
-    </div>
-
     <section class="cards">
 
         <div class="card">
@@ -207,80 +194,24 @@
         <h2>Recent Activity</h2>
 
         <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$10,000.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Sep 2, 2026</small>
+            <span>Investment Deposit</span>
+            <span class="positive">+$10,000.00</span>
         </div>
 
         <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$2,500.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 29, 2026</small>
+            <span>Portfolio Growth</span>
+            <span class="positive">+$2,500.00</span>
         </div>
 
         <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$1,250.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 27, 2026</small>
+            <span>Account Growth</span>
+            <span class="positive">+$1,250.00</span>
         </div>
 
         <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$1,700.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 25, 2026</small>
+            <span>Portfolio Update</span>
+            <span class="positive">+$1,700.00</span>
         </div>
-
-        <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$3,000.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 22, 2026</small>
-        </div>
-
-        <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$750.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 19, 2026</small>
-        </div>
-
-        <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$4,500.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 15, 2026</small>
-        </div>
-
-        <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$1,000.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 11, 2026</small>
-        </div>
-
-        <div class="activity-row">
-            <strong>Received</strong><br>
-            <small>From: Jamal Gibson</small><br>
-            <small>Amount: +$750.00</small><br>
-            <small>Status: Completed</small><br>
-            <small>Date: Aug 8, 2026</small>
-        </div>
-
-        <p>
-            <small>Demo account — sample activity only.</small>
-        </p>
 
     </section>
 
@@ -381,7 +312,7 @@
 </main>
 
 <footer>
-    © 2026 Bright Wealth Investments — Demo
+    © 2026 Bright Wealth Investments
 </footer>
 
 <script>
